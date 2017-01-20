@@ -2,3 +2,8 @@ html {
   position: relative;
   min-height: 100%;
 }
+
+#headersearch{
+  color: red;
+  background-color: aqua;
+}
