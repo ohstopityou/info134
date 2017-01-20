@@ -1,9 +1,47 @@
-html {
-  position: relative;
+html, body {
   min-height: 100%;
+  margin: 0;
+}
+
+#header {
+  background-color: dimgray;
+  float: left;
+  min-width: 100%;
+  margin: 0;
+  height: 60px;
+  line-height: 60px;
 }
 
 #headersearch{
   color: red;
   background-color: aqua;
+  float: right;
+  display: inline;
+  height: 60px;
+  padding: 0 20px;
+}
+
+#logo img{
+  height: 60px;
+  display: inline;
+  float: left;
+  padding-left: 10px;
+}
+
+#header ul{
+  display: inline;
+  list-style-type: none;
+}
+
+#header li{
+  float:left;
+  margin-left: 40px;
+}
+
+#header li a {
+  padding: 10px 15px;
+  background-color: #FFF;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid black;
 }
