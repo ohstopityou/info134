@@ -1,15 +1,43 @@
 html, body {
   min-height: 100%;
   margin: 0;
+  background-color: lightgrey;
 }
 
 #header {
+  position: fixed;
   background-color: dimgray;
   float: left;
   min-width: 100%;
   margin: 0;
   height: 60px;
   line-height: 60px;
+}
+
+#content {
+  margin: 0 auto;
+  width: 70%;
+  height: 100%;
+  padding-top: 60px;
+  background-color: antiquewhite;
+}
+
+#movieposter{
+  height: 400px;
+  display: inline-block;
+  float: left;
+}
+
+#images{
+  clear: both;
+  height: 500px;
+}
+
+#logo img{
+  height: 60px;
+  display: inline;
+  float: left;
+  padding-left: 10px;
 }
 
 #headersearch{
@@ -19,13 +47,6 @@ html, body {
   display: inline;
   height: 60px;
   padding: 0 20px;
-}
-
-#logo img{
-  height: 60px;
-  display: inline;
-  float: left;
-  padding-left: 10px;
 }
 
 #header ul{
@@ -44,4 +65,12 @@ html, body {
   text-decoration: none;
   text-align: center;
   border: 1px solid black;
+}
+
+#header li a:hover {
+  background-color: black;
+}
+
+#images img{
+  display: inline-block;
 }
