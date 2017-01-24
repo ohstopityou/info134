@@ -1,0 +1,64 @@
+html, body {
+  min-height: 100%;
+  margin: 0;
+  background-color: lightgrey;
+}
+
+header {
+  position: fixed;
+  background-color: dimgray;
+  float: left;
+  min-width: 100%;
+  margin: 0;
+  height: 60px;
+}
+
+header h1 {
+  display: inline-block;
+}
+
+#logon {
+  float:right;
+  display: inline-block;
+  border: 1px solid black;
+  padding: 1px;
+}
+
+main {
+  display:flex;
+}
+
+#content {
+  /*! margin: 0 auto; */
+  width: 70%;
+  /*! height: 100%; */
+  padding-top: 60px;
+  background-color: antiquewhite;
+}
+
+#movieposter{
+  height: 400px;
+  display: inline-block;
+  float: left;
+}
+
+#images{
+  clear: both;
+  height: 500px;
+}
+
+#newmovies {
+ background-color: red;
+ width: 200px;
+ height: 800px;
+ margin-left: auto;
+ margin-top: 60px;
+}
+
+#rightbar {
+  float: right;
+    background-color: blue;
+    width: 200px;
+  margin-right: auto;
+  margin-top: 60px;
+}

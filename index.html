@@ -2,16 +2,32 @@
 <html lang="en">
  <head>
    <title>UiB Movie Database</title>
+   <meta charset="UTF-8">
    <link rel="stylesheet" href="css/stylesheet.css">
    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
  </head>
   <body>
-    <div id="header"></div>
+    <header>
+      <h1> UiB Filmer </h1>
+      <div id="logon">
+        <p id="username"> brukernavn </p>
+        <p id="logout"> logg ut </p>
+      </div>
+    </header>
+    <main>
+    <aside id="newmovies">
+    left sidebar
+    </aside>
     <div id="content">
-      ...
+     <form action="#">
+      <input type="text" name="søk" value="søk">
+      <input type="submit">
+     </form> 
     </div>
-    <script>
-    $("#header").load("templates/header.html");
-    </script>
+    <aside id="rightbar">
+      right sidebar
+    </aside>
+    </div>
+  </main>
   </body>
 </html>
