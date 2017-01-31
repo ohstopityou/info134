@@ -1,36 +1,77 @@
 html, body {
   min-height: 100%;
-  margin: 0;
   background-color: lightgrey;
+  margin: 0;
 }
 
-#header {
+header {
   position: fixed;
+  top: 0px;
+  clear: both;
   background-color: dimgray;
-  float: left;
-  min-width: 100%;
-  margin: 0;
+  width: 100%;
+  margin: 0px 0px 60px 0px;
   height: 60px;
-  line-height: 60px;
+  line-height: 40px;
+  vertical-align: top;
+  display: block;
+}
+
+#container{
+  margin-top: 60px;
+  display: flex;
+  background-color: blue;
+  justify-content: center;
+  padding: 0 50px;
+}
+
+header h1 {
+  float:left; 
+}
+
+#logon {
+  float: right;
+  line-height: 10px;
 }
 
 #content {
   margin: 0 auto;
-  width: 70%;
+  width: 400px;;
   height: 100%;
-  padding-top: 60px;
+  margin-top: 60px;
   background-color: antiquewhite;
 }
 
-#movieposter{
-  height: 400px;
-  display: inline-block;
-  float: left;
+@media screen and (max-width: 480px) {
+    #container {
+        flex-wrap: wrap;
+    }
+    #sistreturnert {
+        order: 99;
+    }
 }
 
-#images{
-  clear: both;
+#sistreturnert {
+  height: 200px;
+  width: 300px;
+  min-width: 200px;
+  background-color: aquamarine;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+#newmovies {
+  background-color: red;
   height: 500px;
+  width: 200px;
+  min-width: 100px;
+}
+
+#rightbar {
+  background-color: orange;
+  height: 500px;
+  width: 200px;
+  min-width: 100px;
 }
 
 #logo img{
@@ -40,27 +81,8 @@ html, body {
   padding-left: 10px;
 }
 
-#headersearch{
-  color: red;
-  background-color: aqua;
-  float: right;
-  display: inline;
-  height: 60px;
-  padding: 0 20px;
-}
-
-#header ul{
-  display: inline;
-  list-style-type: none;
-}
-
-#header li{
-  float:left;
-  margin-left: 40px;
-}
-
 #header li a {
-  padding: 10px 15px;
+  padding: 5px 15px;
   background-color: #FFF;
   text-decoration: none;
   text-align: center;
@@ -71,6 +93,8 @@ html, body {
   background-color: black;
 }
 
-#images img{
+#movieposter{
+  height: 400px;
   display: inline-block;
+  float: left;
 }
