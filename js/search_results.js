@@ -17,11 +17,11 @@ function search_for(title, actor, director, genre, country) {
     return movie_object["otitle"].toLowerCase().includes(country.toLowerCase())
   }
   
-  if (title     == undefined && 
-      actor     == undefined && 
-      director  == undefined && 
-      genre     == undefined && 
-      country   == undefined){
+  if (title     === '' && 
+      actor     === '' && 
+      director  === '' && 
+      genre     === '' && 
+      country   === ''){
       console.log("No input")}
   else{
     var j = 0;
@@ -29,12 +29,17 @@ function search_for(title, actor, director, genre, country) {
       if (j < 5){
       movie_object = movies_object[movie_id]
       console.log(country.toLowerCase())
-      if ((title.toLowerCase()   == movie_object["otitle"].toLowerCase()    || title === '')    &&
-         (actor.toLowerCase()    == movie_object["folk"].toLowerCase()      || actor === '')    &&
-         (director.toLowerCase() == movie_object["dir"].toLowerCase()       || director === '') &&
-         //(genre.toLowerCase()    == movie_object["genre"].toLowerCase()   || genre === '')    &&
-         (country.toLowerCase()  == movie_object["country"].toLowerCase()   || country === '')) {
-        results.push(movie_id) }
+      
+      console.log(movie_object["country"].toLowerCase().includes(country.toLowerCase()))
+      console.log((country === ''))
+      if ((movie_object["otitle"].toLowerCase().includes(title.toLowerCase())    || (title === ''))    &&
+         (movie_object["folk"].toLowerCase().includes(actor.toLowerCase())       || (actor === ''))    &&
+         (movie_object["dir"].toLowerCase().includes(director.toLowerCase())     || (director === '')) &&
+         //(movie_object["genre"].toLowerCase().includes(genre.toLowerCase())   || genre === '')     &&
+         (movie_object["country"].toLowerCase().includes(country.toLowerCase())  || (country === ''))) {
+        results.push(movie_id) 
+        console.log(results.length)
+        }
       j++;
     }
     }
