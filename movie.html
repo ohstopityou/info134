@@ -4,7 +4,11 @@
    <title>UiB Movie Database</title>
    <meta charset="UTF-8">
    <link rel="stylesheet" href="css/stylesheet.css">
-   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+   <script type="text/javascript" src="js/genres.js"></script>
+   <script type="text/javascript" src="js/reviews.js"></script>
+   <script type="text/javascript" src="js/object.js"></script>
+   <script type="text/javascript" src="js/movieinfo.js"></script>
+   <script type="text/javascript" src="js/query_params.js"></script>
  </head>
   <body>
     <div class="top-header">
@@ -39,7 +43,7 @@
         <div class="jumbotron-wrapper">
           <img src="movies/Film1/The_Intouchables_3.jpg">
           <div class="movieinfo">
-            <h1>Intouchables</h1>
+            <h1 id="otitle">Intouchables</h1>
             <h3>director</h3>
             <p>After he becomes a quadriplegic from a paragliding accident, an aristocrat hires a young man from the projects to be his caregiver.</p>
             <div class="button"><a href="#">Rate movie</a></div>
@@ -62,15 +66,15 @@
       <div class="card-wrapper">
       <h2 class="cardtitle">Actors</h2>
       <div class="actors card">
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
+        <a href="List.html"><img src="images/image.jpg"></a>
+        <a href="List.html"><img src="images/image.jpg"></a>
+        <a href="List.html"><img src="images/image.jpg"></a>
+        <a href="List.html"><img src="images/image.jpg"></a>
+        <a href="List.html"><img src="images/image.jpg"></a>
+        <a href="List.html"><img src="images/image.jpg"></a>
+        <a href="List.html"><img src="images/image.jpg"></a>
+        <a href="List.html"><img src="images/image.jpg"></a>
+        <a href="List.html"><img src="images/image.jpg"></a>
       </div> 
       </div>
       
@@ -85,6 +89,26 @@
       </div>
       </div> 
     </div>
+        <table id="movie_stat_table" border=1>
+      <caption>Table: Stats from "object"</caption>
+      <tr>
+		<td align="center"><b>Key</b></td><td align="center"><b>Value</b></td>
+      </tr>
+    </table>
+    
+    <table id="genre_stat_table" border=1>
+      <caption>Table: Stats from "object_genre"</caption>
+      <tr>
+		<td align="center"><b>Key</b></td><td align="center"><b>Value</b></td>
+      </tr>
+    </table>
+    
+    <table id="review_stat_table" border=1>
+      <caption>Table: Stats from "reivew"</caption>
+      <tr>
+		<td align="center"><b>Key</b></td><td align="center"><b>Value</b></td>
+      </tr>
+    </table>
     <footer>
       Thomas Søvik - 2017
     </footer>

@@ -4,7 +4,11 @@
    <title>UiB Movie Database</title>
    <meta charset="UTF-8">
    <link rel="stylesheet" href="css/stylesheet.css">
-   <script src="js/script.js"></script>
+   <script type="text/javascript" src="js/script.js"></script>
+   <script type="text/javascript" src="js/Object.js"></script>
+   <script type="text/javascript" src="js/loadMovies.js"></script>
+   <script type="text/javascript" src="js/query_params.js"></script>
+   <script type="text/javascript" src="js/search_results.js"></script>
  </head>
  <body>
     <div class="top-header">
@@ -31,7 +35,7 @@
           </form>
         </div>
       </div>
-     </header>
+    </header>
     </div>
     
     <div class="container">
@@ -39,69 +43,18 @@
       <h1> Viser resultater for _søk_</h1>
       <div class="stretchdiv"></div>
       <p id="status">nah</p>
-      <img src="image.jpg" id="viewsetting" onclick="changeCardLength()">
-      
+      <img src="images/image.jpg" id="columnViewSetting" onclick="toggleClass('card-wrapper', 'fullwidth')">
+      toggle tinyCard
+      <img src="images/image.jpg" id="tinyViewSetting" onclick="toggleClass('movieCard', 'tinyCard')">
     </header>
-     
-      <div class="cards-container">
-      <div class="card-wrapper">
-        <div class="card moviecard">
-          <a href="movie.html"><img src="image.jpg"></a>
-          <div class="movieinfo">
-              Director: aaa<br>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis minus iure deleniti harum aliquid error culpa enim nihil cumque libero quaerat, ipsum illum odio consequatur facere sequi voluptatem laboriosam eaque!
-          </div>
-        </div>
-      </div>
-       <div class="card-wrapper">
-        <div class="card moviecard">
-          <a href="movie.html"><img src="image.jpg"></a>
-          <div class="movieinfo">
-              Director: aaa<br>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex natus animi architecto, quibusdam rem quod facilis quis, at, aperiam veritatis aspernatur nulla tempore provident inventore quasi iusto dolor, impedit obcaecati!
-          </div>
-        </div>
-      </div>
-      <div class="card-wrapper">
-        <div class="card moviecard">
-          <a href="movie.html"><img src="image.jpg"></a>
-          <div class="movieinfo">
-              Director: aaa<br>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex natus animi architecto, quibusdam rem quod facilis quis, at, aperiam veritatis aspernatur nulla tempore provident inventore quasi iusto dolor, impedit obcaecati!
-          </div>
-        </div>
-      </div>
-      <div class="card-wrapper">
-        <div class="card moviecard">
-          <a href="movie.html"><img src="image.jpg"></a>
-          <div class="movieinfo">
-              Director: aaa<br>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex natus animi architecto, quibusdam rem quod facilis quis, at, aperiam veritatis aspernatur nulla tempore provident inventore quasi iusto dolor, impedit obcaecati!
-          </div>
-        </div>
-      </div>
-      <div class="card-wrapper">
-        <div class="card moviecard">
-          <a href="movie.html"><img src="image.jpg"></a>
-          <div class="movieinfo">
-              Director: aaa<br>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex natus animi architecto, quibusdam rem quod facilis quis, at, aperiam veritatis aspernatur nulla tempore provident inventore quasi iusto dolor, impedit obcaecati!
-          </div>
-        </div>
-      </div>
-      <div class="card-wrapper">
-        <div class="card moviecard">
-          <a href="movie.html"><img src="image.jpg"></a>
-          <div class="movieinfo">
-              Director: aaa<br>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex natus animi architecto, quibusdam rem quod facilis quis, at, aperiam veritatis aspernatur nulla tempore provident inventore quasi iusto dolor, impedit obcaecati!
-          </div>
-        </div>
-      </div>
+      <div class="cards-container" id="insertAMovies">
+        NO movies found
       </div> <!-- Card container-->
+      
+      
+    </div>
     <footer>
       Thomas Søvik - 2017
     </footer>
-    </div>
   </body>
 </html>

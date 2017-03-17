@@ -1,24 +1,15 @@
-function changeCardLength() {
+function toggleClass(elements, className) {
+  console.log(elements, className);
   
-  var status = document.getElementById("status");
-  //var getCard = document.getElementsByClassName("moviecard");
-  var getWrapper = document.getElementsByClassName("card-wrapper");
-  var mq = window.matchMedia( "(min-width: 1200px)" );
-  
-  if (mq.matches) {
-    status.style.backgroundColor="red";
-  for (var i = 0; i < getWrapper.length; i++) {
+  var getElements = document.getElementsByClassName(elements);
+  //var mq = window.matchMedia( "(min-width: 1200px)" );
+  for (var i = 0; i < getElements.length; i++) {
 
-    if (getWrapper[i].style.maxWidth == "1200px"){
-      
+    if (getElements[i].classList.contains(className)){
       //sjekker object style, not media query style
-      getWrapper[i].style.maxWidth = "580px";
-      status.innerHTML="580";
+      getElements[i].classList.remove(className);
     } else {
-      
-      getWrapper[i].style.maxWidth = "1200px";
-      status.innerHTML="1200";
+      getElements[i].className += " " + className;
     }
   }
-}
 }
