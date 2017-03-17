@@ -24,24 +24,16 @@ function search_for(title, actor, director, genre, country) {
       country   === ''){
       console.log("No input")}
   else{
-    var j = 0;
     for (movie_id in movies_object){
-      if (j < 5){
       movie_object = movies_object[movie_id]
-      console.log(country.toLowerCase())
-      
+      console.log(movie_object)
       console.log(movie_object["country"].toLowerCase().includes(country.toLowerCase()))
-      console.log((country === ''))
       if ((movie_object["otitle"].toLowerCase().includes(title.toLowerCase())    || (title === ''))    &&
-         (movie_object["folk"].toLowerCase().includes(actor.toLowerCase())       || (actor === ''))    &&
+         //(movie_object["folk"].toLowerCase().includes(actor.toLowerCase())       || (actor === ''))    &&
          (movie_object["dir"].toLowerCase().includes(director.toLowerCase())     || (director === '')) &&
-         //(movie_object["genre"].toLowerCase().includes(genre.toLowerCase())   || genre === '')     &&
+         //(movie_object["genre"].toLowerCase().includes(genre.toLowerCase())    || genre === '')     &&
          (movie_object["country"].toLowerCase().includes(country.toLowerCase())  || (country === ''))) {
-        results.push(movie_id) 
-        console.log(results.length)
-        }
-      j++;
-    }
+        results.push(movie_id)}
     }
   }//end else
   displayResults(results)
