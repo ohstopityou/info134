@@ -11,7 +11,17 @@ function loadMovieCard(movieId) {
   card.className="card movieCard"
   item_link = document.createElement("A")
   item_link.href = "../movie.html?id=" + movieId
+
+  list_element.appendChild(wrapper)
+  wrapper.appendChild(card)
+  card.appendChild(item_link)
+  loadMovieCardInfo(movieId, item_link)
+}
+
+function loadMovieCardInfo(movieId, container){
+  movieObject = movies_object[movieId]
   poster = createPosterByMovieId(movieId)
+  
   movieinfo = document.createElement("div")
   movieinfo.className="movieInfo"
   title = document.createElement("p")
@@ -29,14 +39,10 @@ function loadMovieCard(movieId) {
   country = document.createElement("p")
   country.className="country"
   country.innerHTML=movieObject["country"]
-
-  director = document.createTextNode(movieObject["dir"])
-
-  list_element.appendChild(wrapper)
-  wrapper.appendChild(card)
-  card.appendChild(item_link)
-  item_link.appendChild(poster)
-  item_link.appendChild(movieinfo)
+  
+  console.log(container)
+  container.appendChild(poster)
+  container.appendChild(movieinfo)
   movieinfo.appendChild(title)
   movieinfo.appendChild(year)
   movieinfo.appendChild(runtime)
@@ -44,7 +50,7 @@ function loadMovieCard(movieId) {
   movieinfo.appendChild(country)
 }
 
-function toggleLargeMovieCard(){
+function loadMovieRatingBar(){
   
 }
 
@@ -92,6 +98,7 @@ function getUrlByMovieId(id){
 }
 
 function createPosterByMovieId(id){
+  console.log("createPoster")
   poster = document.createElement("div")
   poster.className="moviePoster"
   img = document.createElement("img");

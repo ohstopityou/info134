@@ -4,12 +4,21 @@ function panic(message) {
 }
 
 function setData() {
-  poster = document.querySelector(".moviePoster")
-  poster.src=getUrlByMovieId(movie_object["id"])
   about = document.querySelector("#about")
   about.innerHTML=movie_object["description"]
-  title = document.querySelector("#movieTitle")
-  title.innerHTML=movie_object["otitle"]
+  
+  actors = document.querySelector("#actors")
+  ul = document.createElement("ul")
+  actors.appendChild(ul)
+  
+  console.log(movie_object["folk"])
+  actors = movie_object["folk"].split(", ")
+  for (var i = 0; i < actors.length; i++){
+    li = document.createElement("li")
+    li.innerHTML=actors[i]
+    ul.appendChild(li)
+  }
+
 }
 
 function add_row(table, left, right) {
@@ -72,5 +81,8 @@ window.onload = function() {
 	    add_row(review_table, left, right);
 	}
     }
+
+  loadMovieCardInfo(movie_object["id"], document.querySelector(".jumbotron-wrapper"))
+  
   setData()
 };
