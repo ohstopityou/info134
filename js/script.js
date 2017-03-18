@@ -6,7 +6,6 @@ function toggleClass(elements, className) {
   for (var i = 0; i < getElements.length; i++) {
 
     if (getElements[i].classList.contains(className)){
-      //sjekker object style, not media query style
       getElements[i].classList.remove(className);
     } else {
       getElements[i].className += " " + className;

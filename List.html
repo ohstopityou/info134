@@ -49,11 +49,18 @@
       <img src="images/image.jpg" id="tinyViewSetting" onclick="toggleClass('movieCard', 'tinyCard')">
     </header>
       <div class="cards-container" id="insertAMovies">
-        NO movies found
-      </div> <!-- Card container-->
-      
-      
-    </div>
+        <script>
+          console.log("inlinescript")
+          if (noInput()) {
+            getIDs()
+            loadMore()
+          } else{
+            document.getElementById("insertAMovies").innerHTML = "No input"
+          }
+        </script>
+      </div> <!-- Cards container-->
+      <div class="button" id="showMore" onclick="loadMore()">show more movies</div>
+      </div>
     <footer>
       Thomas Søvik - 2017
     </footer>

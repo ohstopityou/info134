@@ -1,13 +1,15 @@
-function search_for(title, actor, director, genre, country) {  
+console.log("searchResults")
+
+title       = ''
+actor       = ''
+director    = ''
+genre       = ''
+country     = ''
+
+function search_for() {
   var results = []
   
-  if (title     === '' &&
-      actor     === '' && 
-      director  === '' &&
-      country   === '' && 
-      genre     === '')
-    {console.log("no input")}
-  else {
+  if (!noInput){
     for (movie_id in movies_object){
       movie_object = movies_object[movie_id]
       
@@ -21,8 +23,19 @@ function search_for(title, actor, director, genre, country) {
           //console.log(genres_object[movie_id])
           }
     }
-  }//end else
+  }
   displayResults(results)
+}
+
+var noInput = function(){
+  console.log("noInput")
+  if (title     === '' &&
+      actor     === '' && 
+      director  === '' &&
+      country   === '' && 
+      genre     === '')
+    {return true}
+  return false
 }
 
 function listAllGenres(){
@@ -66,29 +79,24 @@ function resetSearchResults() {
 }
 
 window.onload = function() {
-	query_params = get_query_string_parameters();
-  
-    var film_title  = ''
-    var actor       = ''
-    var director    = ''
-    var genre       = ''
-    var country     = ''
+  console.log("searchOnload")
+  query_params = get_query_string_parameters();
 
-	if (query_params.film_title) {
-        film_title = query_params.film_title;
-    }
-	if (query_params.actor) {
-		actor = query_params.actor;
-    }
-	if (query_params.director) {
-		director = query_params.director;
-    }
-	if (query_params.genre) {
-		genre = query_params.genre;
-    }
-	if (query_params.country) {
-		country = query_params.country;
-    }
-  
-    search_for(film_title, actor, director, genre, country)
+  if (query_params.film_title) {
+      film_title = query_params.film_title;
+  }
+  if (query_params.actor) {
+      actor = query_params.actor;
+  }
+  if (query_params.director) {
+      director = query_params.director;
+  }
+  if (query_params.genre) {
+      genre = query_params.genre;
+  }
+  if (query_params.country) {
+      country = query_params.country;
+  }
+
+  search_for()
 }

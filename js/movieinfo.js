@@ -3,6 +3,15 @@ function panic(message) {
     alert(message);
 }
 
+function setData() {
+  poster = document.querySelector(".moviePoster")
+  poster.src=getUrlByMovieId(movie_object["id"])
+  about = document.querySelector("#about")
+  about.innerHTML=movie_object["description"]
+  title = document.querySelector("#movieTitle")
+  title.innerHTML=movie_object["otitle"]
+}
+
 function add_row(table, left, right) {
     new_row = document.createElement("TR");
     left_cell = document.createElement("TD");
@@ -35,13 +44,6 @@ window.onload = function() {
     // get the review info (if it exists)
     review_object = reviews_object[query_params.id];
     
-    
-    // render page
-    var title_element = document.getElementById("otitle");
-    // title_element.appendChild(document.createTextNode(movie_object["otitle"]));    
-    title_element.innerHTML = movie_object["otitle"];
-    console.log(movie_object["otitle"])
-    
     // add a "debug-table" on the bottom showing all elements from movie_object
     stats_table = document.getElementById("movie_stat_table");
     for (key in movie_object) {
@@ -70,4 +72,5 @@ window.onload = function() {
 	    add_row(review_table, left, right);
 	}
     }
+  setData()
 };
