@@ -1,16 +1,4 @@
-window.onload = function() {
-    
-    var i = 0;
-    for (movie_id in movies_object){
-      movie_object = movies_object[movie_id];
-      if (i < 0){
-        i++;
-        loadMovie(movie_id)
-    }
-}
-}
-
-function loadMovie(movieId) {
+function loadMovieCard(movieId) {
       movieObject = movies_object[movieId];
       list_element = document.getElementById("insertAMovies");
       
@@ -42,4 +30,8 @@ function loadMovie(movieId) {
       moviePoster.appendChild(img);
       item_link.appendChild(movieinfo);
       movieinfo.appendChild(movie_title);
+}
+
+loadMovieImages(movieId){
+  
 }
