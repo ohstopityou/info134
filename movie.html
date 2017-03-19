@@ -4,6 +4,7 @@
    <title>UiB Movie Database</title>
    <meta charset="UTF-8">
    <link rel="stylesheet" href="css/stylesheet.css">
+   <script type="text/javascript" src="js/script.js"></script>
    <script type="text/javascript" src="js/genres.js"></script>
    <script type="text/javascript" src="js/reviews.js"></script>
    <script type="text/javascript" src="js/object.js"></script>
@@ -41,45 +42,12 @@
     
     <div class="container">
       <div class="jumbotron">
-        <div class="jumbotron-wrapper">
+        <div class="jumbotron-wrapper"></div>
+      </div>
+      <div class="cards-container"></div>
 
-        </div>
-      </div>
+      <div class="button" id="columnViewSetting" onclick="toggleClass('card-wrapper', 'fullwidth')">toggle fullwidth</div>
       
-      <div class="cards-container">
-    
-      <div class="card-wrapper">
-        <h2 class="cardtitle">About</h2>
-        <div class="card" id="about"></div>
-      </div>
-      
-      <div class="card-wrapper">
-        <h2 class="cardtitle">Actors</h2>
-        <div class="card" id="actors"></div>
-      </div>
-      
-
-    </div>
-        <table id="movie_stat_table" border=1>
-      <caption>Table: Stats from "object"</caption>
-      <tr>
-		<td align="center"><b>Key</b></td><td align="center"><b>Value</b></td>
-      </tr>
-    </table>
-    
-    <table id="genre_stat_table" border=1>
-      <caption>Table: Stats from "object_genre"</caption>
-      <tr>
-		<td align="center"><b>Key</b></td><td align="center"><b>Value</b></td>
-      </tr>
-    </table>
-    
-    <table id="review_stat_table" border=1>
-      <caption>Table: Stats from "reivew"</caption>
-      <tr>
-		<td align="center"><b>Key</b></td><td align="center"><b>Value</b></td>
-      </tr>
-    </table>
     <footer>
       Thomas Søvik - 2017
     </footer>

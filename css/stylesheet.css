@@ -240,10 +240,6 @@ form {
   max-height: 250px;
 }
 
-.interactionBar{
-  
-}
-
 .movieTitle {
   font-size: 30px;
 }
@@ -258,8 +254,13 @@ form {
 
 .director {}
 
-#about {
+.Description {
   line-height: 25px;
+}
+
+iframe{
+  width: 100%;
+  height: 350px;
 }
 
 .movieInfo {
@@ -349,18 +350,14 @@ form {
   box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.12);
 }
 
-.cardtitle{
-  margin: 15px 0 5px;
-}
-
-#columnViewSetting, #tinyViewSetting {
-  width: 45px;
-  height: 45px;
-  margin-bottom: -4px;
+.card-title{
+  margin: 10px 0 5px;
 }
 
 #columnViewSetting{
-  display: none;
+  position: fixed;
+  top:60px;
+  right: 10px;
 }
 
 .moviescroller, .imgscroller{

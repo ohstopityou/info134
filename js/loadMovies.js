@@ -40,7 +40,6 @@ function loadMovieCardInfo(movieId, container){
   country.className="country"
   country.innerHTML=movieObject["country"]
   
-  console.log(container)
   container.appendChild(poster)
   container.appendChild(movieinfo)
   movieinfo.appendChild(title)
