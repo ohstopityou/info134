@@ -1,23 +1,25 @@
 console.log("searchResults")
 
-title       = ''
-actor       = ''
-director    = ''
-genre       = ''
-country     = ''
+inputTitle       = ''
+inputActor       = ''
+inputDirector    = ''
+inputGenre       = ''
+inputCountry     = ''
 
 function search_for() {
+  console.log("searching")
   var results = []
   
-  if (!noInput){
+  if (!noInput()){
+    console.log("input found")
     for (movie_id in movies_object){
       movie_object = movies_object[movie_id]
       
-      if (inputMatchesData(title, movie_object["otitle"])     && 
-          inputMatchesData(actor, movie_object["folk"])       &&
-          inputMatchesData(director, movie_object["dir"])     &&
-          inputMatchesData(country, movie_object["country"])  &&
-          genreMatches(genre, movie_id))
+      if (inputMatchesData(inputTitle, movie_object["otitle"])     && 
+          inputMatchesData(inputActor, movie_object["folk"])       &&
+          inputMatchesData(inputDirector, movie_object["dir"])     &&
+          inputMatchesData(inputCountry, movie_object["country"])  &&
+          genreMatches(inputGenre, movie_id))
           { results.push(movie_id) 
           //console.log(movie_object)
           //console.log(genres_object[movie_id])
@@ -27,13 +29,13 @@ function search_for() {
   displayResults(results)
 }
 
-var noInput = function(){
-  console.log("noInput")
-  if (title     === '' &&
-      actor     === '' && 
-      director  === '' &&
-      country   === '' && 
-      genre     === '')
+function noInput(){
+  console.log("noInput?")
+  if (inputTitle     === '' &&
+      inputActor     === '' && 
+      inputDirector  === '' &&
+      inputCountry   === '' && 
+      inputGenre     === '')
     {return true}
   return false
 }
@@ -80,23 +82,25 @@ function resetSearchResults() {
 
 window.onload = function() {
   console.log("searchOnload")
-  query_params = get_query_string_parameters();
+  search_for()
+}
+
+function getQuerys() {
+    query_params = get_query_string_parameters();
 
   if (query_params.film_title) {
-      film_title = query_params.film_title;
+      inputTitle = query_params.film_title;
   }
   if (query_params.actor) {
-      actor = query_params.actor;
+      inputActor = query_params.actor;
   }
   if (query_params.director) {
-      director = query_params.director;
+      inputDirector = query_params.director;
   }
   if (query_params.genre) {
-      genre = query_params.genre;
+      inputGenre = query_params.genre;
   }
   if (query_params.country) {
-      country = query_params.country;
+      inputCountry = query_params.country;
   }
-
-  search_for()
 }

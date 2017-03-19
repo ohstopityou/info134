@@ -50,11 +50,11 @@
       <div class="cards-container" id="insertAMovies">
         <script>
           console.log("inlinescript")
+          getQuerys()
+          getIDs()
           if (noInput()) {
-            getIDs()
+            console.log("No input!")
             loadMore()
-          } else{
-            document.getElementById("insertAMovies").innerHTML = "No input"
           }
         </script>
       </div> <!-- Cards container-->

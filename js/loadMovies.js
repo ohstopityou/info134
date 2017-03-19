@@ -49,10 +49,6 @@ function loadMovieCardInfo(movieId, container){
   movieinfo.appendChild(country)
 }
 
-function loadMovieRatingBar(){
-  
-}
-
 function loadMovieImages(containerId){
   cardScroller = document.getElementById(containerId)
   
