@@ -290,7 +290,6 @@ iframe{
 }
 
 .card-wrapper {
-  max-width: 600px;
   flex-basis: 600px;
   flex-shrink: 1;
   padding: 10px;
@@ -305,6 +304,7 @@ iframe{
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   margin: 0 auto;
   padding: 10px;
+  width: 100%;
 }
 
 .movieCard {
@@ -317,7 +317,6 @@ iframe{
   max-height: 80px;
   line-height: 40px;
   margin-bottom: 0px;
-  max-width: 600px;
   padding: 0px;
 }
 
@@ -346,6 +345,10 @@ iframe{
   min-width: 100%;
 }
 
+.flexBasis {
+  flex-basis: 800px;
+}
+
 .movieCard:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.12);
 }
@@ -356,7 +359,7 @@ iframe{
 
 #columnViewSetting{
   position: fixed;
-  top:60px;
+  top:260px;
   right: 10px;
 }
 
