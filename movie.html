@@ -3,6 +3,7 @@
  <head>
    <title>UiB Movie Database</title>
    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="css/stylesheet.css">
    <script type="text/javascript" src="js/script.js"></script>
    <script type="text/javascript" src="js/genres.js"></script>
@@ -42,10 +43,13 @@
     
     <div class="container">
       <div class="jumbotron">
-        <div class="jumbotron-wrapper"></div>
+        <div class="jumbotron-container">
+          <div class="movieHeader"></div>
+        </div>
       </div>
+      
       <div class="cards-container"></div>
-
+      
       <div class="button" id="columnViewSetting" onclick="toggleClass('card-wrapper', 'flexBasis')">columnWidth</div>
       
     <footer>

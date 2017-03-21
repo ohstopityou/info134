@@ -1,120 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-   <title>UiB Movie Database</title>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="css/stylesheet.css">
-   <script type="text/javascript" src="js/object.js"></script>
-   <script type="text/javascript" src="js/loadMovies.js"></script>
- </head>
+  <head>
+    <title>UiB Movie Database</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script type="text/javascript" src="js/object.js"></script>
+    <script type="text/javascript" src="js/loadMovies.js"></script>
+  </head>
   <body>
     <div class="top-header">
-     <header>
-      <a href="index.html" id="pagetitle">UiB Filmer</a>
-      <div class="stretchdiv"></div>
-      <div id="nav">
-        <img src="images/menu-icon.png" id="menu-icon">
-        <div class="menu">
-         <ul>
-          <li><a href="List.html">Mine Filmer</a></li>
-          <li><a href="List.html">Mine Lån</a></li>
-         </ul>
-        </div>
-      </div>
-      <div id="profile-icon">
-        <img src="http://placehold.it/40x40">
-        <div id="logon">
-          <form action="#">
-            please log in<br>
-            <input type="text" name="username" value="usrnme"><br>
-            <input type="password" name="password"><br>
-            <input type="submit">
-          </form>
-        </div>
-      </div>
-     </header>
-    </div>
-    
-    <div class="container">
-    <div class="jumbotron">
-     <div class="jumbotron-container">
-     <div class="search-container">
-     <div class="search">
-      <form id="search" action="list.html">
-          <div>
-              <h1>Advanced search</h1>
-              <h2>Her blir det mulig å søke etter filmer basert på tittel, skuespillere, sjangere, land og/eller regissør</h2>
+      <header>
+        <a href="index.html" id="pagetitle">UiB Filmer</a>
+        <div class="stretchdiv"></div>
+        <div id="nav">
+          <img src="images/menu-icon.png" id="menu-icon">
+          <div class="menu">
+           <ul>
+            <li><a href="List.html">Mine Filmer</a></li>
+            <li><a href="List.html">Mine Lån</a></li>
+           </ul>
           </div>
-          <fieldset>
-              <legend>Søk</legend>
-              <div>
-                  <label for="film_title">Film tittel</label>
-                  <input id="film_title" name="film_title" type="text" placeholder="e.g. King Kong" >
-              </div>
-              <div>
-                  <label for="actor">Skuespiller</label>
-                  <input id="actor" name="actor" type="text" placeholder="e.g. Tom Hanks" >
-              </div>
-              <div>
-                  <label for="director">Regissør</label>
-                  <input id="director" name="director" type="text" placeholder="e.g. Tom Hanks" >
-              </div>
-              <div>
-                  <label for="genre">Sjanger</label>
-                  <input id="genre" name="genre" type="text" placeholder="Drama">
-              </div>
-              <div>
-                  <label for="country">Land</label>
-                  <input id="country" name="country" type="text" placeholder="Frankrike">
-              </div>	
-          </fieldset>
-          <input type="submit" id="submit_search" value="Søk">
-      </form>
-     <p>Følgende kan låne: staben ved institutt for informasjon-og medievitenskap, studenter ved institutt.</p>
-     </div><!-- search -->
-     </div>
-     </div>
+        </div>
+        <div id="profile-icon">
+          <img src="http://placehold.it/40x40">
+          <div id="logon">
+            <form action="#">
+              please log in<br>
+              <input type="text" name="username" value="usrnme"><br>
+              <input type="password" name="password"><br>
+              <input type="submit">
+            </form>
+          </div>
+        </div>
+      </header>
     </div>
-    
-    <div class="cards-container">
-    
-    <div class="card-wrapper fullwidth">
-      <h2 class="cardtitle">recommendations</h2>
-      <div class="card moviescroller" id="recommendations">
-      
+
+    <div class="container">
+      <div class="jumbotron">
+        <div class="jumbotron-container">
+          <div class="search-container">
+            <div class="search">
+              <form id="search" action="list.html">
+                <fieldset>
+                    <div>
+                        <input id="film_title" name="film_title" type="text" placeholder="movie name" >
+                        <input type="submit" id="submit_search" value="Søk">
+                    </div>
+                    <div>
+                        <input id="actor" name="actor" type="text" placeholder="actor" >
+                    </div>
+                    <div>
+                        <input id="director" name="director" type="text" placeholder="director" >
+                    </div>
+                    <div>
+                        <input id="genre" name="genre" type="text" placeholder="Genre">
+                    </div>
+                    <div>
+                        <input id="country" name="country" type="text" placeholder="Country">
+                    </div>	
+                </fieldset>
+              </form>
+              <p>Følgende kan låne: staben ved institutt for informasjon-og medievitenskap, studenter ved institutt.</p>
+            </div><!-- search -->
+          </div>
+        </div>
       </div>
-    </div>
-    
-    <div class="card-wrapper fullwidth">
-      <h2 class="cardtitle">new movies</h2>
-      <div class="card moviescroller" id="newMovies">
-      
+
+      <div class="cards-container">
+        <div class="card-wrapper fullwidth">
+          <h2 class="cardtitle">recommendations</h2>
+          <div class="card moviescroller" id="recommendations"><!--js--></div>
+        </div>
+
+        <div class="card-wrapper fullwidth">
+          <h2 class="cardtitle">new movies</h2>
+          <div class="card moviescroller" id="newMovies"><!--js--></div>
+        </div>
+
+        <div class="card-wrapper fullwidth">
+          <h2 class="cardtitle">last returned</h2>
+          <div class="card moviescroller" id="lastReturned"><!--js--></div>
+        </div>
+
+        <div class="card-wrapper">
+          <h2 class="cardtitle">Statistics</h2>
+          <div class="card statistics">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores placeat, iusto obcaecati sunt labore accusantium aut aliquam facere nisi, doloremque, hic. Expedita, delectus consequatur sequi, totam omnis modi voluptatibus aperiam.</div>
+        </div>
       </div>
-    </div>
-    
-    <div class="card-wrapper fullwidth">
-      <h2 class="cardtitle">last returned</h2>
-      <div class="card moviescroller" id="lastReturned">
-      
-      </div>
-    </div>
-    
-    <div class="card-wrapper">
-    <h2 class="cardtitle">Statistics</h2>
-    <div class="card statistics">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores placeat, iusto obcaecati sunt labore accusantium aut aliquam facere nisi, doloremque, hic. Expedita, delectus consequatur sequi, totam omnis modi voluptatibus aperiam.</div>
-    </div>
-    
-    </div>
-    <footer>
-      Thomas Søvik - 2017
-    </footer>
-    <script>
-      getIDs()
-      loadMovieImages("recommendations")
-      loadMovieImages("newMovies")
-      loadMovieImages("lastReturned")
-    </script>
+      <footer>
+        Thomas Søvik - 2017
+      </footer>
+      <script>
+        getIDs()
+        loadMovieImages("recommendations")
+        loadMovieImages("newMovies")
+        loadMovieImages("lastReturned")
+      </script>
     </div>
   </body>
 </html>

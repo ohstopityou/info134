@@ -11,10 +11,36 @@ function setData() {
   loadReviews()
 }
 
+function loadDescription(){
+  description = movie_object["description"]
+  if (description != "" && description != null){
+    cardsContainer.appendChild(createDataCard("Description"))
+    descriptionCard = document.querySelector("#Description")
+    descriptionCard.innerHTML=description
+  }
+}
+
+function loadActors(){
+  if (movie_object["folk"] != null){
+    actors = movie_object["folk"].split(", ")
+    if (actors[0] != ""){
+      cardsContainer.appendChild(createDataCard("Actors"))
+      actorsList = document.createElement("ul")
+      actorsCard = document.getElementById("Actors")
+      actorsCard.appendChild(actorsList)
+
+      for (var i = 0; i < actors.length; i++){
+        li = document.createElement("li")
+        li.innerHTML=actors[i]
+        actorsList.appendChild(li)
+      }
+    }
+  }
+}
+
 function loadTrailer() {
-  console.log(movie_object)
   trailerId = movie_object["youtube trailer id"]
-  if(trailerId != null && trailerId != ''){
+  if(trailerId != null && trailerId != ""){
     cardsContainer.appendChild(createDataCard("Trailer"))
     iframe = document.createElement("iframe")
     url = "https://www.youtube.com/embed/"+trailerId
@@ -36,31 +62,6 @@ function loadReviews(){
     li.innerHTML=comments[i]["mod_date"]
     commentsList.appendChild(li)
   } 
-}
-
-function loadDescription(){
-  description = movie_object["description"]
-  if (description != null){
-    cardsContainer.appendChild(createDataCard("Description"))
-    descriptionCard = document.querySelector("#Description")
-    descriptionCard.innerHTML=description
-  }
-}
-
-function loadActors(){
-  actors = movie_object["folk"].split(", ")
-  if (actors.length > 0){
-    cardsContainer.appendChild(createDataCard("Actors"))
-    actorsList = document.createElement("ul")
-    actorsCard = document.getElementById("Actors")
-    actorsCard.appendChild(actorsList)
-    
-    for (var i = 0; i < actors.length; i++){
-      li = document.createElement("li")
-      li.innerHTML=actors[i]
-      actorsList.appendChild(li)
-    }
-  }
 }
 
 function createDataCard(name){
@@ -120,7 +121,7 @@ window.onload = function() {
   // get the review info (if it exists)
   review_object = reviews_object[query_params.id];
   
-  loadMovieCardInfo(movie_object["id"], document.querySelector(".jumbotron-wrapper"))
+  loadMovieCardInfo(movie_object["id"], document.querySelector(".movieHeader"))
   
   setData()
 }
