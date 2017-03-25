@@ -5,48 +5,34 @@ var validIDs = []
 function loadMovieCard(movieId) {
   movieObject = movies_object[movieId]
   list_element = document.getElementById("insertAMovies")
-  wrapper = document.createElement("div")
-  wrapper.className="card-wrapper"
-  card = document.createElement("div")
-  card.className="card movieCard"
-  item_link = document.createElement("A")
+  wrapper = createElement("card-wrapper", list_element)
+  card = createElement("card movieCard", wrapper)
+  item_link = createElement(null, card, null, "a")
   item_link.href = "../movie.html?id=" + movieId
-
-  list_element.appendChild(wrapper)
-  wrapper.appendChild(card)
-  card.appendChild(item_link)
+  
   loadMovieCardInfo(movieId, item_link)
 }
 
 function loadMovieCardInfo(movieId, container){
   movieObject = movies_object[movieId]
-  poster = createPosterByMovieId(movieId)
-  
-  movieinfo = document.createElement("div")
-  movieinfo.className="movieInfo"
-  title = document.createElement("p")
-  title.className = "movieTitle"
-  title.innerHTML=movieObject["otitle"]
-  year = document.createElement("p")
-  year.className= "year"
-  year.innerHTML=( "("+ movieObject["year"]+")")
-  runtime = document.createElement("p")
-  runtime.className= "runtime"
-  runtime.innerHTML=(movieObject["length"] + " min")
-  genre = document.createElement("p")
-  genre.className= "genre"
-  genre.innerHTML=genres_object[movieId]
-  country = document.createElement("p")
-  country.className="country"
-  country.innerHTML=movieObject["country"]
-  
-  container.appendChild(poster)
-  container.appendChild(movieinfo)
-  movieinfo.appendChild(title)
-  movieinfo.appendChild(year)
-  movieinfo.appendChild(runtime)
-  movieinfo.appendChild(genre)
-  movieinfo.appendChild(country)
+  container.appendChild(createPosterByMovieId(movieId))
+  movieInfo = createElement("movieInfo", container)
+  createElement("movieTitle", movieInfo, movieObject["otitle"])
+  createElement("genre", movieInfo, genres_object[movieId], "p")
+  createElement("year", movieInfo, "("+ movieObject["year"]+")", "p")
+  createElement("country", movieInfo, movieObject["country"], "p")
+  createElement("runtime", movieInfo, movieObject["length"] + " min", "p")
+  //createElement("button", movieInfo, "save")
+  //createElement("button", movieInfo, "leie")
+}
+
+function createElement (classname, containerElement, innerHtml, type){
+  if (type == null) {type = "div"}
+  newDiv = document.createElement(type)
+  if (classname != null){newDiv.className = classname}
+  if (innerHtml != null){newDiv.innerHTML = innerHtml}
+  if (containerElement != null) {containerElement.appendChild(newDiv)}
+  return newDiv
 }
 
 function loadMovieImages(containerId){
@@ -54,17 +40,10 @@ function loadMovieImages(containerId){
   
   for (var i = 0; i < 10; i++){
     id = getRandomId()
-    
-    movie = document.createElement("div")
-    movie.className="movie"
-
-    movie_link = document.createElement("a");
+    movie = createElement("movie", cardScroller)
+    movie_link = createElement(null, movie, null, "a")
     movie_link.href = "../movie.html?id=" + id;
-    
-    poster = createPosterByMovieId(id)
-    
-    cardScroller.appendChild(movie)
-    movie.appendChild(movie_link)
+    poster = createPosterByMovieId(id);   
     movie_link.appendChild(poster)
   }
 }
@@ -93,11 +72,14 @@ function getUrlByMovieId(id){
 }
 
 function createPosterByMovieId(id){
-  console.log("createPoster")
-  poster = document.createElement("div")
-  poster.className="moviePoster"
+  poster = createElement("moviePoster")
+  createElement("posterTitle", poster, movies_object[id]["otitle"], "h2")
   img = document.createElement("img");
-  img.src = getUrlByMovieId(id)
+  img.src = getUrlByMovieId(id);
+  img.onerror = function(){
+    this.style.display="none";
+    this.parentElement.style.border = "10px solid black";
+  }
   poster.appendChild(img)
   return poster
 }
@@ -107,5 +89,3 @@ function loadMore() {
     loadMovieCard(getRandomId())
   }
 }
-
-

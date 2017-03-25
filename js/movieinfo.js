@@ -30,9 +30,7 @@ function loadActors(){
       actorsCard.appendChild(actorsList)
 
       for (var i = 0; i < actors.length; i++){
-        li = document.createElement("li")
-        li.innerHTML=actors[i]
-        actorsList.appendChild(li)
+        createElement(null, actorsList, actors[i], "li")
       }
     }
   }
@@ -65,16 +63,9 @@ function loadReviews(){
 }
 
 function createDataCard(name){
-  wrapper = document.createElement("div")
-  wrapper.classList="card-wrapper"
-  cardTitle = document.createElement("h2")
-  cardTitle.classList="card-title"
-  cardTitle.innerHTML=name
-  card = document.createElement("div")
-  card.classList="card"
-  card.id=name
-  wrapper.appendChild(cardTitle)
-  wrapper.appendChild(card)
+  wrapper = createElement("card-wrapper")
+  createElement("card-title", wrapper, name, "h2")
+  createElement("card", wrapper).id=name
   return wrapper
 }
 
@@ -88,18 +79,6 @@ function getComments(){
   }return reviews
 }
 
-function add_row(table, left, right) {
-    new_row = document.createElement("TR");
-    left_cell = document.createElement("TD");
-    left_cell.appendChild(left);
-    new_row.appendChild(left_cell);
-    
-    right_cell = document.createElement("TD");
-    right_cell.appendChild(right);
-    new_row.appendChild(right_cell);
-    
-    table.appendChild(new_row);
-}
 
 window.onload = function() {
   
@@ -120,8 +99,6 @@ window.onload = function() {
   genre_object = genres_object[query_params.id];
   // get the review info (if it exists)
   review_object = reviews_object[query_params.id];
-  
   loadMovieCardInfo(movie_object["id"], document.querySelector(".movieHeader"))
-  
   setData()
 }

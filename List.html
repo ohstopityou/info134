@@ -39,15 +39,28 @@
       </div>
     </header>
     </div>
-    
-    <div class="container">
-    <header style="margin-top:60px;">
-      <h1> Viser resultater for _søk_</h1>
-      <div class="stretchdiv"></div>
-      <div class="button" onclick="toggleClass('card-wrapper', 'flexBasis')">columnWidth</div>
-      
+    <div class="search-header">
+      <header>
       <div class="button" onclick="toggleClass('movieCard', 'tinyCard')">cardSize</div>
-    </header>
+      <div class="searchbar-wrapper"> 
+        <form id="search" action="list.html">
+          <div>
+              <input id="film_title" name="film_title" type="text" placeholder="filter" >
+              <input type="submit" class="button" value="Søk">
+          </div>
+        </form>
+      </div>
+      <div class="button" onclick="toggleClass('card-wrapper', 'flexBasis')">columnWidth</div>
+      </header>
+    </div>
+    <div class="container" style="margin-top:120px;">
+<!--       <header style="margin-top:60px;">
+        <h1> Viser resultater for _søk_</h1>
+        <div class="stretchdiv"></div>
+        
+      
+        
+      </header> -->
       <div class="cards-container" id="insertAMovies">
         <script>
           console.log("inlinescript")
