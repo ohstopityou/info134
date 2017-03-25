@@ -25,10 +25,8 @@ function loadActors(){
     actors = movie_object["folk"].split(", ")
     if (actors[0] != ""){
       cardsContainer.appendChild(createDataCard("Actors"))
-      actorsList = document.createElement("ul")
-      actorsCard = document.getElementById("Actors")
-      actorsCard.appendChild(actorsList)
-
+      actorsCard = document.querySelector("#Actors")
+      actorsList = createElement(null, actorsCard, null, "ul")
       for (var i = 0; i < actors.length; i++){
         createElement(null, actorsList, actors[i], "li")
       }
