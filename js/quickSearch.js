@@ -6,7 +6,7 @@ window.onload = function() {
   
   searchForm.addEventListener("click", showSearchBox)
   searchBack.addEventListener("click", exitSearchBox)
-  searchForm.addEventListener("keydown", loadTinyCard)
+  searchForm.addEventListener("keypress", loadQuickSearchResult)
 
   function showSearchBox(){
     console.log("searchbox")
@@ -23,12 +23,13 @@ window.onload = function() {
     searchBack.style.opacity="0"
   }
   
-  function loadTinyCard() {
-    
-    //console.log(searchForm.value)
-    wrapper = createElement("card-wrapper", searchBox)
-    console.log(searchForm)
+  function loadQuickSearchResult(movieId) {
     console.log(searchForm.value)
-    createElement("card tinyCard", wrapper, searchForm.value)
+    wrapper = createElement("card-wrapper", searchBox)
+    card = createElement("card tinyCard", wrapper)
+    card.appendChild(createPosterByMovieId(1))
+    var movieTitle = movies_object[1]["otitle"]
+    movieInfo = createElement("movieInfo", card)
+    createElement("movieTitle", movieInfo, movieTitle) 
   }
 }

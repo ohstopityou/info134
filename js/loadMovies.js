@@ -14,6 +14,8 @@ function loadMovieCard(movieId) {
   loadMovieCardInfo(movieId, item_link)
 }
 
+
+
 function loadMovieCardInfo(movieId, container){
   movieObject = movies_object[movieId]
   container.appendChild(createPosterByMovieId(movieId))

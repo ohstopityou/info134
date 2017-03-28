@@ -14,11 +14,19 @@ body {
   background-color: whitesmoke;
 }
 
+* {
+  font-family: Lobster;
+  font-style: normal;
+  font-variant: normal;
+  letter-spacing: 1px;
+}
+
 a {
   text-decoration: none; font-weight: bold; color: limegreen;
 }
 
 a:hover{
+  color: white;
   background-color: darkslategray;
 }
 
@@ -29,17 +37,50 @@ a:hover{
   position: relative;
 }
 
+.jumbotron {
+  box-sizing: border-box;
+  padding: 0 10px 0 20px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.jumbotron-wrapper {
+  display: flex;
+  padding-top: 60px;
+  width: 100%;
+  background-image: url(../images/wall.jpg);
+  border-bottom: 1px solid black;
+}
+
 .stretchdiv {
   flex-grow: 1;
 }
 
-* {
-  font-family: Lobster;
-  font-style: normal;
-  font-variant: normal;
+/* --------headers--------- */
+
+header {
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 10px;
+  margin: 0 auto;
+  height: 100%;
 }
 
-/* --------header--------- */
+header a {
+  line-height: 60px;
+  padding: 0 10px;
+  display: block;
+}
+
+#pageTitle {
+  margin-left: 10px;
+  font-size: 35px;
+  box-sizing: border-box;
+  width: 190px;
+}
 
 .top-header, .search-header {
   position: fixed;
@@ -66,28 +107,7 @@ a:hover{
   padding: 0 10%;
 }
 
-header {
-  max-width: 1200px;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  padding: 0 10px;
-  margin: 0 auto;
-  height: 100%;
-}
-
-#pageTitle {
-  margin-left: 10px;
-  font-size: 35px;
-  box-sizing: border-box;
-  width: 190px;
-}
-
-header a {
-  line-height: 60px;
-  padding: 0 10px;
-  display: block;
-}
+/* ------menu------- */
 
 #menu li {
   display: inline-block;
@@ -115,8 +135,6 @@ header a {
   display: block;
 }
 
-/* ------clickboxes------- */
-
 #logon {
   display: none;
   text-align: center;
@@ -129,8 +147,10 @@ header a {
   background: rgba(54, 25, 25, .8);
 }
 
+/* ------buttons------- */
+
 .button {
-  background-color: green;
+  background-image: url(../images/wall.jpg);
   border: none;
   color: white;
   padding: 15px 30px;
@@ -138,8 +158,9 @@ header a {
   text-decoration: none;
   font-size: 15px;
   box-sizing: border-box;
-  border: 1px solid white;
+  border: 2px solid darkslategrey;
   border-radius: 2px;
+  cursor: pointer;
 }
 
 .button:hover {
@@ -160,7 +181,7 @@ header a {
   margin-top: -6px;
 }
 
-/* ---------main-------- */
+/* ---------movies-------- */
 
 .movie {
   display: inline-block;
@@ -200,91 +221,18 @@ header a {
   z-index: 0;
 }
 
-/* ---------search++------- */
-
-.search-container {
-  padding: 30px 10px 20px;
+.moviescroller {
+  min-width: 100%;
+  padding-right: 0;
 }
 
-.search-container p{
-  margin-top: 15px;
-}
-
-form > div {
-  height: 50px;
-}
-
-#quickSearchForm {
-  position: relative;
-  z-index: 11;
-}
-
-#quickSearchForm input[type="text"] {
-  width: calc(100% - 100px);
-  height: 100%;
-  font-size: 18px;
-  box-sizing: border-box;
-  padding-left: 10px;
-  border-radius: 2px;
-  border: 0px;
-}
-
-#quickSearchForm .button {
-  height: 100%;
-  width: 100px;
-  box-sizing: border-box;
-  margin-left: -4px;
-}
-
-#quickSearchBox {
-  margin-top: 5px;
-  border-radius: 2px;
-  box-sizing: border-box;
-  height: 0;
-  opacity: 0;
-  background-color: whitesmoke;
-  z-index: 11;
-  position: absolute;
-  transition: height 0.4s;
-  max-height: 800px;
-  overflow: hidden;
-  width: calc(100% - 100px);
-}
-
-#quickSearchBox .card-wrapper {
-  padding: 5px 10px;
-}
-
-#quickSearchBackground {
-  z-index: 10;
-  position: absolute;
-  width: 100%;
-  height: 0;
-  opacity: 0;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background: rgba(54, 25, 25, .8);
+.moviescroller .card {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
 /* --------movieinfo-------*/
-
-.jumbotron {
-  box-sizing: border-box;
-  padding: 0 10px 0 20px;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.jumbotron-wrapper {
-  display: flex;
-  padding-top: 60px;
-  width: 100%;
-  background-image: url(../images/wall.jpg);
-  border-bottom: 1px solid black;
-}
 
 .movieHeader{
   overflow: auto;
@@ -325,20 +273,87 @@ form > div {
   line-height: 25px;
 }
 
+table {
+  width: 100%;
+  text-align: center;
+}
+
+td, th{
+  height: 30px;
+  vertical-align: middle;
+}
+
 iframe{
   width: 100%;
   height: 350px;
 }
 
-.left{
-  float: left;
+/* ---------search/filter------- */
+
+.search-container {
+  padding: 30px 10px 20px;
 }
 
-.right{
-  float: right;
+.search-container p{
+  margin-top: 15px;
 }
 
-/* ------------cards------------- */
+/* ---------quicksearch------- */
+
+#quickSearchForm {
+  position: relative;
+  z-index: 11;
+}
+
+#quickSearchForm input[type="text"] {
+  width: calc(100% - 100px);
+  height: 50px;
+  font-size: 18px;
+  box-sizing: border-box;
+  padding-left: 10px;
+  border-radius: 2px;
+  border: 0px;
+}
+
+#quickSearchForm .button {
+  height: 100%;
+  width: 100px;
+  margin-left: -5px;
+}
+
+#quickSearchBox {
+  margin-top: 5px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  height: 0;
+  opacity: 0;
+  background-color: whitesmoke;
+  z-index: 11;
+  position: absolute;
+  transition: height 0.4s;
+  max-height: 800px;
+  overflow: hidden;
+  width: calc(100% - 100px);
+}
+
+#quickSearchBox .card-wrapper {
+  padding: 5px 10px;
+}
+
+#quickSearchBackground {
+  z-index: 10;
+  position: absolute;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(54, 25, 25, .8);
+}
+
+/* ------------cardsbasic------------- */
 
 .cards-container{
   margin: 0 auto;
@@ -372,6 +387,8 @@ iframe{
   padding: 10px;
   width: 100%;
 }
+
+/* ------------moviecard------------- */
 
 .movieCard {
   max-width: 800px;
@@ -409,33 +426,6 @@ iframe{
 
 .movieCard:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.12);
-}
-
-.moviescroller {
-  min-width: 100%;
-  padding-right: 0;
-}
-
-.moviescroller .card {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-}
-
-.imgscroller img {
-  max-height: 400px;
-  margin-right: 10px;
-  margin-bottom: -4px;
-}
-
-table {
-  width: 100%;
-  text-align: center;
-}
-
-td, th{
-  height: 30px;
-  vertical-align: middle;
 }
 
 /* -----------footer------------ */
