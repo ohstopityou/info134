@@ -1,19 +1,30 @@
 window.onload = function() {
-  var searchForm = document.getElementById("search")
-  var searchBox = document.getElementById("quickSearchBox")
-  var searchBack = document.getElementById("quickSearchBackground")
+  
+  var searchForm = document.querySelector("#film_title")
+  var searchBox = document.querySelector("#quickSearchBox")
+  var searchBack = document.querySelector("#quickSearchBackground")
+  
+  searchForm.addEventListener("click", showSearchBox)
+  searchBack.addEventListener("click", exitSearchBox)
+  searchForm.addEventListener("keydown", loadTinyCard)
 
-  function searchBox(){
+  function showSearchBox(){
     console.log("searchbox")
-    searchBox.style.display="block"
-    searchBack.style.display="block"
+    searchBox.style.height="auto"
+    searchBox.style.opacity="1"
+    searchBack.style.height="100%"
+    searchBack.style.opacity="1"
   }
   
-  function searchExit(){
-    searchBox.style.display="none"
-    searchBack.style.display="none"
+  function exitSearchBox(){
+    searchBox.style.height="0"
+    searchBox.style.opacity="0"
+    searchBack.style.height="0"
+    searchBack.style.opacity="0"
   }
   
-  searchForm.addEventListener("keydown", searchBox);
-  searchBack.addEventListener("onclick", searchExit);
+  function loadTinyCard() {
+    wrapper = createElement("card-wrapper", searchBox)
+    createElement("card tinyCard", wrapper, "hey")
+  }
 }
