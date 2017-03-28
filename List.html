@@ -11,67 +11,57 @@
    <script type="text/javascript" src="js/loadMovies.js"></script>
    <script type="text/javascript" src="js/query_params.js"></script>
    <script type="text/javascript" src="js/search_results.js"></script>
+   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster"/>
  </head>
  <body>
     <div class="top-header">
-     <header>
-      <a href="index.html" id="pagetitle">UiB Filmer</a>
-      <div class="stretchdiv"></div>
-      <div id="nav">
-        <img src="images/menu-icon.png" id="menu-icon">
-        <div class="menu">
-         <ul>
-          <li><a href="List.html">Mine Filmer</a></li>
-          <li><a href="List.html">Mine Lån</a></li>
-         </ul>
+      <header>
+        <a href="index.html" id="pageTitle">UiB Filmer</a>
+        <div class="stretchdiv"></div>
+        <div id="nav">
+          <img src="images/menu-icon.png" id="menu-icon">
+          <div class="menu">
+            <ul>
+              <li><a href="List.html?list=mymovies">Mine Filmer</a></li>
+              <li><a href="List.html?list=myloans">Mine Lån</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div id="profile-icon">
-        <img src="http://placehold.it/40x40">
-        <div id="logon">
-          <form action="#">
-            please log in<br>
-            <input type="text" name="username" value="usrnme"><br>
-            <input type="password" name="password"><br>
-            <input type="submit">
-          </form>
+        <div id="profile-icon">
+          <img src="http://placehold.it/40x40">
+          <div id="logon">
+            <form action="#">
+              please log in<br>
+              <input type="text" name="username" value="usrnme"><br>
+              <input type="password" name="password"><br>
+              <input type="submit">
+            </form>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
     </div>
     <div class="search-header">
       <header>
-      <div class="button" onclick="toggleClass('movieCard', 'tinyCard')">cardSize</div>
-      <div class="searchbar-wrapper"> 
-        <form id="search" action="list.html">
-          <div>
-              <input id="film_title" name="film_title" type="text" placeholder="filter" >
-              <input type="submit" class="button" value="Søk">
-          </div>
-        </form>
-      </div>
-      <div class="button" onclick="toggleClass('card-wrapper', 'flexBasis')">columnWidth</div>
+        <div class="button" onclick="toggleClass('movieCard', 'tinyCard')">cardSize</div>
+        <div class="searchbar-wrapper"> 
+          <form id="search" action="list.html">
+            <div>
+                <input id="film_title" name="film_title" type="text" placeholder="filter" >
+                <input type="submit" class="button" value="Søk">
+            </div>
+          </form>
+        </div>
+        <div class="button" onclick="toggleClass('card-wrapper', 'flexBasis')">columnWidth</div>
       </header>
     </div>
-    <div class="container" style="margin-top:120px;">
-<!--       <header style="margin-top:60px;">
-        <h1> Viser resultater for _søk_</h1>
-        <div class="stretchdiv"></div>
-        
-      
-        
-      </header> -->
-      <div class="cards-container" id="insertAMovies">
+    <div class="container" style="margin-top:110px;">
+      <div class="cards-container">
         <script>
           console.log("inlinescript")
           getQuerys()
           getIDs()
-          if (noInput()) {
-            console.log("No input!")
-            loadMore()
-          }
         </script>
-      </div> <!-- Cards container-->
+      </div><!-- Cards container-->
       <div class="button" id="showMore" onclick="loadMore()">show more movies</div>
       </div>
     <footer>

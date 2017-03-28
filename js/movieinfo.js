@@ -1,21 +1,7 @@
-function panic(message) {
-    // window.history.back();
-    alert(message);
-}
-
-function setData() {
-  cardsContainer = document.querySelector(".cards-container")
-  loadDescription()
-  loadActors()
-  loadTrailer()
-  loadReviews()
-}
-
 function loadDescription(){
   description = movie_object["description"]
-  if (description != "" && description != null){
-    cardsContainer.appendChild(createDataCard("Description"))
-    descriptionCard = document.querySelector("#Description")
+  if (description){
+    descriptionCard = createDataCard("Description", cardsContainer)
     descriptionCard.innerHTML=description
   }
 }
@@ -23,9 +9,8 @@ function loadDescription(){
 function loadActors(){
   if (movie_object["folk"] != null){
     actors = movie_object["folk"].split(", ")
-    if (actors[0] != ""){
-      cardsContainer.appendChild(createDataCard("Actors"))
-      actorsCard = document.querySelector("#Actors")
+    if (actors[0]){
+      actorsCard = createDataCard("Actors", cardsContainer)
       actorsList = createElement(null, actorsCard, null, "ul")
       for (var i = 0; i < actors.length; i++){
         createElement(null, actorsList, actors[i], "li")
@@ -37,66 +22,66 @@ function loadActors(){
 function loadTrailer() {
   trailerId = movie_object["youtube trailer id"]
   if(trailerId != null && trailerId != ""){
-    cardsContainer.appendChild(createDataCard("Trailer"))
-    iframe = document.createElement("iframe")
-    url = "https://www.youtube.com/embed/"+trailerId
-    console.log(url)
-    iframe.src=url
-    trailerCard = document.querySelector("#Trailer")
-    trailerCard.appendChild(iframe)
+    trailerCard = createDataCard("Trailer", cardsContainer)
+    iframe = createElement(null, trailerCard, null, "iframe")
+    iframe.src="https://www.youtube.com/embed/"+trailerId
   }
 }
 
 function loadReviews(){
-  cardsContainer.appendChild(createDataCard("Reviews"))
-  commentsBox = document.querySelector("#Reviews")
-  commentsList = document.createElement("ul")
-  commentsBox.appendChild(commentsList)
-  comments = getComments()
-  for (var i = 0; i < comments.length; i++){
-    li = document.createElement("li")
-    li.innerHTML=comments[i]["mod_date"]
-    commentsList.appendChild(li)
-  } 
+  reviewsCard = createDataCard("Reviews", cardsContainer)
+  tableHead = "<thead><tr><th>name</th><th>rating</th><th>comment</th><th>date</th></tr></thead>"
+  table = createElement(null, reviewsCard, tableHead, "table")
+  
+  reviews = reviews_object[movieID]
+  for (review in reviews){
+    newRow = createElement(null, table, null, "tr")
+    createElement(null, newRow, reviews[review]["username"], "td")
+    createElement(null, newRow, reviews[review]["rating"], "td")
+    createElement(null, newRow, reviews[review]["comment"], "td")
+    createElement(null, newRow, reviews[review]["mod_date"], "td")
+  }
+  
+  console.log(getAverageRating(movieID))
 }
 
-function createDataCard(name){
+function getAverageRating(id) {
+  if (!reviews_object[id]){return 0}
+  var rating = 0;
+  var numbOfRatings = 0;
+  for (review in reviews_object[id]){
+    rating += reviews_object[id][review]["rating"]
+    numbOfRatings ++;
+  }
+  return (rating / numbOfRatings).toFixed(3)
+}
+
+function createDataCard(name, container){
   wrapper = createElement("card-wrapper")
   createElement("card-title", wrapper, name, "h2")
-  createElement("card", wrapper).id=name
-  return wrapper
+  card = createElement("card", wrapper)
+  card.id=name
+  container.appendChild(wrapper)
+  return card
 }
-
-function getComments(){
-  var reviews = []
-    for (key in reviews_object){
-    for (subkey in reviews_object[key]){
-      if (reviews_object[key][subkey]["object"] == movie_object["id"])
-      reviews.push(reviews_object[key][subkey])
-    }
-  }return reviews
-}
-
 
 window.onload = function() {
   
+  //get the query params
   query_params = get_query_string_parameters();
-  if (!query_params.id) {
-      panic("No id given");
-      return;
-  }
-
   // get the movie_object from the "database" movies_object
   movie_object = movies_object[query_params.id];
-  if (!movie_object) {
-  panic("Could not retrieve movie_object!");
-  return;
-  }
-  
-    // get the genre info (if it exists)
+  // get the genre info (if it exists)
   genre_object = genres_object[query_params.id];
   // get the review info (if it exists)
   review_object = reviews_object[query_params.id];
+  if (!query_params.id || !movie_object) {return;}
+
   loadMovieCardInfo(movie_object["id"], document.querySelector(".movieHeader"))
-  setData()
+  movieID = movie_object["id"]
+  cardsContainer = document.querySelector(".cards-container")
+  loadDescription()
+  loadActors()
+  loadTrailer()
+  loadReviews()
 }

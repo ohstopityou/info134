@@ -33,6 +33,12 @@ a:hover{
   flex-grow: 1;
 }
 
+* {
+  font-family: Lobster;
+  font-style: normal;
+  font-variant: normal;
+}
+
 /* --------header--------- */
 
 .top-header, .search-header {
@@ -67,10 +73,14 @@ header {
   box-sizing: border-box;
   padding: 0 10px;
   margin: 0 auto;
+  height: 100%;
 }
 
-#pagetitle {
+#pageTitle {
+  margin-left: 10px;
   font-size: 35px;
+  box-sizing: border-box;
+  width: 190px;
 }
 
 header a {
@@ -125,6 +135,8 @@ header a {
   text-align: center;
   text-decoration: none;
   font-size: 15px;
+  box-sizing: border-box;
+  border: 1px solid white;
 }
 
 .button:hover {
@@ -134,16 +146,21 @@ header a {
 #showMore {
   position: relative;
   align-self: center;
-  margin: 10px auto;
+  margin: 0px auto 15px;
   display: block;
   max-width: 600px;
+}
+
+#cardSizeBtn {
+  position: absolute;
+  right: 20px;
+  margin-top: -6px;
 }
 
 /* ---------main-------- */
 
 .movie {
   display: inline-block;
-  height: 250px;
   margin-right: 10px;
 }
 
@@ -151,9 +168,9 @@ header a {
   height: 250px;
   width: 190px; /* ratio lays between 1,3 & 1,5 */
   float: left;
-  margin-bottom: -4px;
   box-sizing: border-box;
   position: relative;
+  overflow: hidden;
 }
 
 .moviePoster img{
@@ -164,12 +181,12 @@ header a {
 }
 
 .posterTitle {
+  z-index: 1;
   font-size: 40px;
   max-width: 100%;
   max-height: 100%;
   position: absolute;
   white-space: pre-wrap;
-  overflow: hidden;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
@@ -180,23 +197,10 @@ header a {
   z-index: 0;
 }
 
-.hidden {
-  display: none;
-}
-
 /* ---------search++------- */
 
-#statistics {
-  background-image: url(../images/statistics.jpg);
-  background-position: center;
-  background-size: cover;
-  height: 250px;
-  width: 200px;
-  margin-bottom: 30px;
-}
-
 .search-container {
-  margin: 20px 40px; 
+  margin: 20px 10px; 
 }
 
 .search-container p{
@@ -219,29 +223,30 @@ form .button {
   height: 100%;
   width: 100px;
   box-sizing: border-box;
-  margin-left:-5px;
+  margin-left: -4px;
 }
 
 /* --------movieinfo-------*/
 
 .jumbotron {
+  box-sizing: border-box;
+  padding: 0 10px 0 20px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.jumbotron-wrapper {
+  display: flex;
   padding-top: 60px;
   width: 100%;
   background-image: url(../images/wall.jpg);
   border-bottom: 1px solid black;
 }
 
-.jumbotron-container {
-  box-sizing: border-box;
-  padding: 0 10px;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1200px;
-}
-
 .movieHeader{
   overflow: auto;
-  height: 250px;
+  height: 100%;
 }
 
 .movieInfo {
@@ -254,14 +259,15 @@ form .button {
 }
 
 .movieInfo > * {
-  width: 50%;
+  box-sizing: border-box;
+  width: 50%
 }
 
 .movieTitle {
   width: 100%;
   font-size: 30px;
   border-bottom: 1px solid black;
-  padding-bottom: 10px;
+  margin-bottom: 80px;
 }
 
 .year, .runtime{
@@ -273,7 +279,7 @@ form .button {
   flex-grow: 1;
 }
 
-.Description {
+#Description , #Actors, #Reviews{
   line-height: 25px;
 }
 
@@ -298,13 +304,20 @@ iframe{
   box-sizing: border-box;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 10px 0;
 }
 
 .card-wrapper {
   flex-basis: 600px;
   flex-shrink: 1;
-  padding: 10px;
+  padding: 10px 20px;
   box-sizing: border-box;
+  max-width: 100%;
+}
+
+.card-title {
+  font-size: 25px;
+  margin-bottom: 10px;
 }
 
 .card {
@@ -320,30 +333,32 @@ iframe{
 
 .movieCard {
   max-width: 800px;
-  height: 250px;
   padding: 0;
+  overflow: auto;
+  height: 100%;
 }
 
 .tinyCard {
-  height: auto;
   max-height: 80px;
   line-height: 40px;
   margin-bottom: 0px;
   padding: 0px;
 }
 
+.tinyCard .movieTitle {
+  border: inherit;
+  margin-bottom: 0px;
+  height: 40px;
+  overflow: hidden;
+}
+
 .tinyCard .moviePoster {
-  display: none;
+  height: 60px;
+  width: 45px;
 }
 
-.tinyCard p, tinyCard .button {
+.tinyCard p, .tinyCard .button {
   display: none;
-}
-
-.fullwidth {
-  max-width: 100%;
-  min-width: 100%;
-  padding-right: 0;
 }
 
 .flexBasis {
@@ -354,26 +369,31 @@ iframe{
   box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.12);
 }
 
-.card-title{
-  margin: 10px 0 5px;
+.moviescroller {
+  min-width: 100%;
+  padding-right: 0;
 }
 
-#columnViewSetting{
-  position: fixed;
-  top:260px;
-  right: 10px;
-}
-
-.moviescroller, .imgscroller{
-  overflow: scroll;
+.moviescroller .card {
+  overflow-x: scroll;
+  overflow-y: hidden;
   white-space: nowrap;
-  padding-right: -10px;
 }
 
 .imgscroller img {
   max-height: 400px;
   margin-right: 10px;
   margin-bottom: -4px;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+}
+
+td, th{
+  height: 30px;
+  vertical-align: middle;
 }
 
 /* -----------footer------------ */
@@ -407,12 +427,26 @@ footer {
   
   .menu li, #menu-icon, #nav:hover .menu{
     display: block;
-  }  
+  }
+  
+  .moviePoster {
+    height: 200px;
+    width: 150px;
+  }
+  
+  #pageTitle {
+    margin-left: 0px;
+  }
+  
+  .jumbotron {
+    padding: 0px;
+  }
+  
+  .movieTitle {
+    margin-bottom: 10px;
+  }
 }
 
 @media only screen and (min-width : 1200px) {
   
-  #columnViewSetting{
-    display: inherit;
-  }
 }

@@ -6,20 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/stylesheet.css">
     <script type="text/javascript" src="js/object.js"></script>
+    <script type="text/javascript" src="js/reviews.js"></script>
     <script type="text/javascript" src="js/loadMovies.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster"/>
   </head>
   <body>
     <div class="top-header">
       <header>
-        <a href="index.html" id="pagetitle">UiB Filmer</a>
+        <a href="index.html" id="pageTitle">UiB Filmer</a>
         <div class="stretchdiv"></div>
         <div id="nav">
           <img src="images/menu-icon.png" id="menu-icon">
           <div class="menu">
-           <ul>
-            <li><a href="List.html">Mine Filmer</a></li>
-            <li><a href="List.html">Mine Lån</a></li>
-           </ul>
+            <ul>
+              <li><a href="List.html?list=mymovies">Mine Filmer</a></li>
+              <li><a href="List.html?list=myloans">Mine Lån</a></li>
+            </ul>
           </div>
         </div>
         <div id="profile-icon">
@@ -37,8 +39,8 @@
     </div>
 
     <div class="container">
-      <div class="jumbotron">
-        <div class="jumbotron-container">
+      <div class="jumbotron-wrapper">
+        <div class="jumbotron">
           <div class="search-container">
             <div class="search">
               <form id="search" action="list.html">
@@ -66,35 +68,19 @@
       </div>
 
       <div class="cards-container">
-        <div class="card-wrapper fullwidth">
-          <h2 class="cardtitle">recommendations</h2>
-          <div class="card moviescroller" id="recommendations"><!--js--></div>
-        </div>
-
-        <div class="card-wrapper fullwidth">
-          <h2 class="cardtitle">new movies</h2>
-          <div class="card moviescroller" id="newMovies"><!--js--></div>
-        </div>
-
-        <div class="card-wrapper fullwidth">
-          <h2 class="cardtitle">last returned</h2>
-          <div class="card moviescroller" id="lastReturned"><!--js--></div>
-        </div>
+        <script>
+          getIDs()
+          loadMovieScrollers()
+        </script>
 
         <div class="card-wrapper">
-          <h2 class="cardtitle">Statistics</h2>
-          <div class="card statistics">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores placeat, iusto obcaecati sunt labore accusantium aut aliquam facere nisi, doloremque, hic. Expedita, delectus consequatur sequi, totam omnis modi voluptatibus aperiam.</div>
+          <h2 class="card-title">Statistics</h2>
+          <div class="card">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores placeat, iusto obcaecati sunt labore accusantium aut aliquam facere nisi, doloremque, hic. Expedita, delectus consequatur sequi, totam omnis modi voluptatibus aperiam.</div>
         </div>
       </div>
-      <footer>
-        Thomas Søvik - 2017
-      </footer>
-      <script>
-        getIDs()
-        loadMovieImages("recommendations")
-        loadMovieImages("newMovies")
-        loadMovieImages("lastReturned")
-      </script>
     </div>
+    <footer>
+      Thomas Søvik - 2017
+    </footer>
   </body>
 </html>

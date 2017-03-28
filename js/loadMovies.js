@@ -1,15 +1,16 @@
 console.log("loadMovies")
 
 var validIDs = []
+var myMovies = []
+var myLoans = []
 
 function loadMovieCard(movieId) {
   movieObject = movies_object[movieId]
-  list_element = document.getElementById("insertAMovies")
+  list_element = document.querySelector(".cards-container")
   wrapper = createElement("card-wrapper", list_element)
   card = createElement("card movieCard", wrapper)
   item_link = createElement(null, card, null, "a")
   item_link.href = "../movie.html?id=" + movieId
-  
   loadMovieCardInfo(movieId, item_link)
 }
 
@@ -22,34 +23,77 @@ function loadMovieCardInfo(movieId, container){
   createElement("year", movieInfo, "("+ movieObject["year"]+")", "p")
   createElement("country", movieInfo, movieObject["country"], "p")
   createElement("runtime", movieInfo, movieObject["length"] + " min", "p")
-  //createElement("button", movieInfo, "save")
-  //createElement("button", movieInfo, "leie")
+  createElement("button", movieInfo, "save")
+  createElement("button", movieInfo, "leie")
 }
 
-function createElement (classname, containerElement, innerHtml, type){
-  if (type == null) {type = "div"}
-  newDiv = document.createElement(type)
-  if (classname != null){newDiv.className = classname}
-  if (innerHtml != null){newDiv.innerHTML = innerHtml}
-  if (containerElement != null) {containerElement.appendChild(newDiv)}
-  return newDiv
+function loadMovieScrollers(){
+  cardsContainer = document.querySelector(".cards-container")
+  recScroller = createMovieScroller("recommendations")
+  newScroller = createMovieScroller("newly added")
+  newMovies = getMoviesByNewest()
+  loadMoviePosters(newScroller, newMovies)
+  recMovies = getMoviesByRecommended()
+  loadMoviePosters(recScroller, recMovies)
 }
 
-function loadMovieImages(containerId){
-  cardScroller = document.getElementById(containerId)
-  
-  for (var i = 0; i < 10; i++){
-    id = getRandomId()
-    movie = createElement("movie", cardScroller)
+function createMovieScroller(name){
+  movieScroller = createElement("card-wrapper moviescroller", cardsContainer)
+  createElement("card-title", movieScroller, name, "h2")
+  card = createElement("card", movieScroller)
+  return card
+}
+
+function loadMoviePosters(container, fromThisArray, howMany){
+  if( !howMany ){ howMany = 15 } //default value
+  for (var i = 0; i < howMany; i++){
+    id = fromThisArray[i]
+    movie = createElement("movie", container)
     movie_link = createElement(null, movie, null, "a")
     movie_link.href = "../movie.html?id=" + id;
-    poster = createPosterByMovieId(id);   
-    movie_link.appendChild(poster)
+    movie_link.appendChild(createPosterByMovieId(id))
   }
 }
 
-function getRandomId(){
-  var randomId = validIDs[Math.floor(Math.random()*3100)]
+function getMoviesByGenre(){
+  
+}
+
+function getMoviesByNewest(){
+  var moviesByNewest = []
+  var i = validIDs.length - 1
+  while (moviesByNewest.length < 50 && i != 0){
+    moviesByNewest.push(validIDs[i])
+    i--
+  }
+  return moviesByNewest;
+}
+
+function getMoviesByRecommended(){
+  var moviesByRating = []
+  var i = 0;
+  while (moviesByRating.length < 50 && i != validIDs.length){
+    if (getAverageRating(validIDs[i]) > 4.5){
+      moviesByRating.push(validIDs[i])
+    }
+    i++
+  }
+  return moviesByRating;
+}
+
+function getAverageRating(id) {
+  if (!reviews_object[id]){return 0}
+  var rating = 0;
+  var numbOfRatings = 0;
+  for (review in reviews_object[id]){
+    rating += reviews_object[id][review]["rating"]
+    numbOfRatings ++;
+  }
+  return (rating / numbOfRatings).toFixed(3)
+}
+
+function getRandomId(idArray){
+  var randomId = idArray[Math.floor(Math.random()*idArray.length)]
   return randomId;
 }
 
@@ -85,7 +129,17 @@ function createPosterByMovieId(id){
 }
 
 function loadMore() {
-  for (var i = 0; i < 6; i++){
-    loadMovieCard(getRandomId())
+  console.log("loadMore")
+  for (var i = 0; i < 2; i++){
+    loadMovieCard(getRandomId(validIDs))
   }
+}
+
+function createElement (classname, container, innerHtml, type){
+  if (type == null) {type = "div"}
+  newDiv = document.createElement(type)
+  if (classname){newDiv.className = classname}
+  if (innerHtml){newDiv.innerHTML = innerHtml}
+  if (container) {container.appendChild(newDiv)}
+  return newDiv
 }

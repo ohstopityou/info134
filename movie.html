@@ -12,18 +12,19 @@
    <script type="text/javascript" src="js/movieinfo.js"></script>
    <script type="text/javascript" src="js/loadMovies.js"></script>
    <script type="text/javascript" src="js/query_params.js"></script>
+   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster"/>
  </head>
   <body>
     <div class="top-header">
       <header>
-        <a href="index.html" id="pagetitle">UiB Filmer</a>
+        <a href="index.html" id="pageTitle">UiB Filmer</a>
         <div class="stretchdiv"></div>
         <div id="nav">
           <img src="images/menu-icon.png" id="menu-icon">
           <div class="menu">
             <ul>
-              <li><a href="List.html">Mine Filmer</a></li>
-              <li><a href="List.html">Mine Lån</a></li>
+              <li><a href="List.html?list=mymovies">Mine Filmer</a></li>
+              <li><a href="List.html?list=myloans">Mine Lån</a></li>
             </ul>
           </div>
         </div>
@@ -42,19 +43,16 @@
     </div>
     
     <div class="container">
-      <div class="jumbotron">
-        <div class="jumbotron-container">
+      <div class="jumbotron-wrapper">
+        <div class="jumbotron">
           <div class="movieHeader"></div>
         </div>
       </div>
-      
-      <div class="cards-container"></div>
-      
-      <div class="button" id="columnViewSetting" onclick="toggleClass('card-wrapper', 'flexBasis')">columnWidth</div>
-      
-    <footer>
-      Thomas Søvik - 2017
-    </footer>
+      <div class="cards-container"> 
+        <!--JS--> 
+        <div class="button" id="cardSizeBtn" onclick="toggleClass('card-wrapper', 'flexBasis')">columnWidth</div>
+      </div>
     </div>
+    <footer>Thomas Søvik - 2017</footer>
   </body>
 </html>

@@ -1,17 +1,16 @@
 console.log("searchResults")
 
-inputTitle       = ''
-inputActor       = ''
-inputDirector    = ''
-inputGenre       = ''
-inputCountry     = ''
+inputTitle      = ''
+inputActor      = ''
+inputDirector   = ''
+inputGenre      = ''
+inputCountry    = ''
+inputList       = ''
 
 function search_for() {
   console.log("searching")
   var results = []
-  
   if (!noInput()){
-    console.log("input found")
     for (movie_id in movies_object){
       movie_object = movies_object[movie_id]
       
@@ -20,23 +19,26 @@ function search_for() {
           inputMatchesData(inputDirector, movie_object["dir"])     &&
           inputMatchesData(inputCountry, movie_object["country"])  &&
           genreMatches(inputGenre, movie_id))
-          { results.push(movie_id) 
-          //console.log(movie_object)
-          //console.log(genres_object[movie_id])
-          }
+          { results.push(movie_id) }
     }
+  }
+  if (inputList == "mymovies") {
+    results = getMoviesByNewest()
   }
   displayResults(results)
 }
 
 function noInput(){
-  console.log("noInput?")
-  if (inputTitle     === '' &&
-      inputActor     === '' && 
-      inputDirector  === '' &&
-      inputCountry   === '' && 
-      inputGenre     === '')
-    {return true}
+  if (inputTitle    === ''  && 
+      inputActor    === ''  && 
+      inputDirector === ''  && 
+      inputCountry  === ''  && 
+      inputGenre    === '')
+    {
+      console.log("no input found")
+      return true
+    }
+  console.log("input found")
   return false
 }
 
@@ -59,25 +61,28 @@ function genreMatches(genreInput, movie_id) {
 }
 
 var inputMatchesData = function(iData, oData) {
-  if (iData === '') {return true} //user did not search for anything
-  if (oData != null) {return oData.toLowerCase().includes(iData.toLowerCase())}
-  else {return false}             //user searched for x but data is null
+  if (!iData) //user did not search for anything
+    {return true}
+  if (oData)  //checks if data is valid
+    {return oData.toLowerCase().includes(iData.toLowerCase())}
+  else        //user searched for x but data is invalid
+    {return false}
 }
 
 function displayResults(results) {
-  if (results.length > 0){ resetSearchResults() }
-  var resultList = document.getElementById("resultList")
+  console.log(results.length)
+  if (results.length == 0){ resetSearchResults() }
   var j = 0;
   for(var i = 0; i < results.length; i++) {
     if (j < 10){
-        loadMovieCard(results[i])
-        j++;
+      loadMovieCard(results[i])
+      j++;
     }
   }
 }
 
 function resetSearchResults() {
-	document.getElementById("insertAMovies").innerHTML = "";
+  document.querySelector(".cards-container").innerHTML = "";
 }
 
 window.onload = function() {
@@ -102,5 +107,8 @@ function getQuerys() {
   }
   if (query_params.country) {
       inputCountry = query_params.country;
+  }
+  if (query_params.list) {
+      inputList = query_params.list;
   }
 }
