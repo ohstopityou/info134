@@ -24,7 +24,11 @@ window.onload = function() {
   }
   
   function loadTinyCard() {
+    
+    //console.log(searchForm.value)
     wrapper = createElement("card-wrapper", searchBox)
-    createElement("card tinyCard", wrapper, "hey")
+    console.log(searchForm)
+    console.log(searchForm.value)
+    createElement("card tinyCard", wrapper, searchForm.value)
   }
 }

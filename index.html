@@ -16,17 +16,17 @@
       <header>
         <a href="index.html" id="pageTitle">UiB Filmer</a>
         <div class="stretchdiv"></div>
-        <div id="nav">
+        <div id="menu">
           <img src="images/menu-icon.png" id="menu-icon">
-          <div class="menu">
+          <nav>
             <ul>
               <li><a href="List.html?list=mymovies">Mine Filmer</a></li>
               <li><a href="List.html?list=myloans">Mine Lån</a></li>
             </ul>
-          </div>
+          </nav>
         </div>
-        <div id="profile-icon">
-          <img src="http://placehold.it/40x40">
+        <div id="profile">
+          <img src="http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=50585199">
           <div id="logon">
             <form action="#">
               please log in<br>
@@ -43,29 +43,27 @@
       <div class="jumbotron-wrapper">
         <div class="jumbotron">
           <div class="search-container">
-            <div class="search">
-              <form action="list.html">
-                <div id="search">
-                  <input id="film_title" name="film_title" type="text" placeholder="movie name" autocomplete="off">
-                  <input type="submit" class="button" value="Søk">
-                </div>
-                <div id="quickSearchBox"><!--JS--></div>
-                <div id="quickSearchBackground"></div>
-                <!--<div>
-                    <input id="actor" name="actor" type="text" placeholder="actor" >
-                </div>
-                <div>
-                    <input id="director" name="director" type="text" placeholder="director" >
-                </div>
-                <div>
-                    <input id="genre" name="genre" type="text" placeholder="Genre">
-                </div>
-                <div>
-                    <input id="country" name="country" type="text" placeholder="Country">
-                </div>-->
-              </form>
-              <p>Følgende kan låne: staben ved institutt for informasjon-og medievitenskap, studenter ved institutt.</p>
-            </div><!-- search -->
+            <form action="list.html" id="quickSearchForm">
+              <div>
+                <input id="film_title" name="film_title" type="text" placeholder="movie name" autocomplete="off">
+                <input type="submit" class="button" value="Søk">
+              </div>
+              <div id="quickSearchBox"><!--JS--></div>
+              <!--<div>
+                  <input id="actor" name="actor" type="text" placeholder="actor" >
+              </div>
+              <div>
+                  <input id="director" name="director" type="text" placeholder="director" >
+              </div>
+              <div>
+                  <input id="genre" name="genre" type="text" placeholder="Genre">
+              </div>
+              <div>
+                  <input id="country" name="country" type="text" placeholder="Country">
+              </div>-->
+            </form>
+            <div id="quickSearchBackground"></div>
+            <p>Følgende kan låne: staben ved institutt for informasjon-og medievitenskap, studenter ved institutt.</p>
           </div>
         </div>
       </div>
