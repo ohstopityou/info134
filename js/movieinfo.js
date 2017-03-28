@@ -40,8 +40,7 @@ function loadReviews(){
     createElement(null, newRow, reviews[review]["rating"], "td")
     createElement(null, newRow, reviews[review]["comment"], "td")
     createElement(null, newRow, reviews[review]["mod_date"], "td")
-  }
-  
+  }  
   console.log(getAverageRating(movieID))
 }
 

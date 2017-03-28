@@ -29,12 +29,15 @@ function loadMovieCardInfo(movieId, container){
 
 function loadMovieScrollers(){
   cardsContainer = document.querySelector(".cards-container")
+  
   recScroller = createMovieScroller("recommendations")
+  loadMoviePosters(recScroller, getMoviesByRecommended())
+  
   newScroller = createMovieScroller("newly added")
-  newMovies = getMoviesByNewest()
-  loadMoviePosters(newScroller, newMovies)
-  recMovies = getMoviesByRecommended()
-  loadMoviePosters(recScroller, recMovies)
+  loadMoviePosters(newScroller, getMoviesByNewest())
+  
+  lastLoanedScroller = createMovieScroller("recently loaned")
+  loadMoviePosters(lastLoanedScroller, getMoviesByLoaned())
 }
 
 function createMovieScroller(name){
@@ -81,6 +84,14 @@ function getMoviesByRecommended(){
   return moviesByRating;
 }
 
+function getMoviesByLoaned(){
+  var moviesByLoaned = []
+  for (var i = 0; i < 50; i++){
+    moviesByLoaned.push(getRandomId())
+  }
+  return moviesByLoaned;
+}
+
 function getAverageRating(id) {
   if (!reviews_object[id]){return 0}
   var rating = 0;
@@ -93,6 +104,7 @@ function getAverageRating(id) {
 }
 
 function getRandomId(idArray){
+  if (!idArray) {idArray = validIDs}
   var randomId = idArray[Math.floor(Math.random()*idArray.length)]
   return randomId;
 }
@@ -126,13 +138,6 @@ function createPosterByMovieId(id){
   }
   poster.appendChild(img)
   return poster
-}
-
-function loadMore() {
-  console.log("loadMore")
-  for (var i = 0; i < 2; i++){
-    loadMovieCard(getRandomId(validIDs))
-  }
 }
 
 function createElement (classname, container, innerHtml, type){

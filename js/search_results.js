@@ -1,4 +1,6 @@
-console.log("searchResults")
+console.log("searchResults.js")
+var results = []
+var resultIndex = 0
 
 inputTitle      = ''
 inputActor      = ''
@@ -9,7 +11,6 @@ inputList       = ''
 
 function search_for() {
   console.log("searching")
-  var results = []
   if (!noInput()){
     for (movie_id in movies_object){
       movie_object = movies_object[movie_id]
@@ -25,7 +26,7 @@ function search_for() {
   if (inputList == "mymovies") {
     results = getMoviesByNewest()
   }
-  displayResults(results)
+  displayResults()
 }
 
 function noInput(){
@@ -69,20 +70,28 @@ var inputMatchesData = function(iData, oData) {
     {return false}
 }
 
-function displayResults(results) {
-  console.log(results.length)
-  if (results.length == 0){ resetSearchResults() }
-  var j = 0;
-  for(var i = 0; i < results.length; i++) {
-    if (j < 10){
-      loadMovieCard(results[i])
-      j++;
-    }
+function displayResults() {
+  console.log("number of results : " + results.length)
+  if (results.length == 0){ 
+    document.querySelector(".cards-container").innerHTML = "" 
   }
+  loadMore()
 }
 
-function resetSearchResults() {
-  document.querySelector(".cards-container").innerHTML = "";
+function loadMore() {
+  console.log("loadMore")
+  var loadTo = resultIndex + 6
+  while (resultIndex < loadTo && resultIndex != results.length){
+    loadMovieCard(results[resultIndex])
+    resultIndex++
+  }
+  var resultsLeft = results.length - resultIndex
+  if (resultsLeft <= 0){
+    document.querySelector("#showMore").style.display = 'none';
+    return;
+  }
+  var btnText = "Load more movies (" + resultsLeft + " more)"
+  document.querySelector("#showMore").innerHTML = btnText
 }
 
 window.onload = function() {
