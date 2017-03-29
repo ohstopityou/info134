@@ -31,17 +31,11 @@ window.onload = function() {
 		// og returnerer fra metoden
 		return;
 	}
-    console.log("searching")
 	// Ellers så bruker vi fuzzyAnimalSearch-metoden
 	var results = fuzzyAnimalSearch(this.value);
     console.log(results)
 	// Og viser resultatene
 	displayResults(results);
-  }
-  
-  function loadQuickSearchResult(movieId) {
-    console.log(searchForm.value)
-    
   }
   
   function resetSearchResults() {
@@ -67,15 +61,13 @@ window.onload = function() {
   }
   
   function fuzzyAnimalSearch(searchTerm) {
-    console.log(searchTerm)
 	
-	var nameMatches = function(id) {
+    var nameMatches = function(id) {
       var movieName = movies_object[id]["otitle"]
       return movieName.toLowerCase().includes(searchTerm.toLowerCase());
-	}
+    }
 
 	return validIDs.filter(id => nameMatches(id));
-    console.log("done")
   }
 }
 
