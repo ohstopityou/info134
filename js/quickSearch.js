@@ -1,35 +1,82 @@
 window.onload = function() {
   
   var searchForm = document.querySelector("#film_title")
-  var searchBox = document.querySelector("#quickSearchBox")
+  var resultList = document.querySelector("#quickSearchBox")
   var searchBack = document.querySelector("#quickSearchBackground")
   
-  searchForm.addEventListener("click", showSearchBox)
-  searchBack.addEventListener("click", exitSearchBox)
-  searchForm.addEventListener("keypress", loadQuickSearchResult)
+  searchForm.addEventListener("click", showResultList)
+  searchBack.addEventListener("click", exitResultList)
+  searchForm.addEventListener("keyup", instantSearch)
 
-  function showSearchBox(){
-    console.log("searchbox")
-    searchBox.style.height="auto"
-    searchBox.style.opacity="1"
+  function showResultList(){
+    console.log("resultList")
+    resultList.style.height="auto"
+    resultList.style.opacity="1"
     searchBack.style.height="100%"
     searchBack.style.opacity="1"
   }
   
-  function exitSearchBox(){
-    searchBox.style.height="0"
-    searchBox.style.opacity="0"
+  function exitResultList(){
+    resultList.style.height="0"
+    resultList.style.opacity="0"
     searchBack.style.height="0"
     searchBack.style.opacity="0"
   }
   
+  function instantSearch(e) {
+	// Hvis verdien i input-feltet er tom
+	if(this.value === '') {
+		// Da resetter vi søkeresultatene 
+		resetSearchResults();
+		// og returnerer fra metoden
+		return;
+	}
+    console.log("searching")
+	// Ellers så bruker vi fuzzyAnimalSearch-metoden
+	var results = fuzzyAnimalSearch(this.value);
+    console.log(results)
+	// Og viser resultatene
+	displayResults(results);
+  }
+  
   function loadQuickSearchResult(movieId) {
     console.log(searchForm.value)
-    wrapper = createElement("card-wrapper", searchBox)
-    card = createElement("card tinyCard", wrapper)
-    card.appendChild(createPosterByMovieId(1))
-    var movieTitle = movies_object[1]["otitle"]
-    movieInfo = createElement("movieInfo", card)
-    createElement("movieTitle", movieInfo, movieTitle) 
+    
+  }
+  
+  function resetSearchResults() {
+	resultList.innerHTML = "";
+  }
+  
+  function displayResults(results) {
+    
+    resetSearchResults()
+    
+    var index = 0;
+    while (index < results.length && index < 10) {
+      wrapper = createElement("card-wrapper", resultList)
+      card = createElement("card movieCard tinyCard", wrapper)
+      item_link = createElement(null, card, null, "a")
+      item_link.href = "../movie.html?id=" + results[index]
+      item_link.appendChild(createPosterByMovieId(results[index]))
+      var movieTitle = movies_object[results[index]]["otitle"]
+      movieInfo = createElement("movieInfo", item_link)
+      createElement("movieTitle", movieInfo, movieTitle)
+      index++;
+    }
+  }
+  
+  function fuzzyAnimalSearch(searchTerm) {
+    console.log(searchTerm)
+	
+	var nameMatches = function(id) {
+      var movieName = movies_object[id]["otitle"]
+      return movieName.toLowerCase().includes(searchTerm.toLowerCase());
+	}
+
+	return validIDs.filter(id => nameMatches(id));
+    console.log("done")
   }
 }
+
+

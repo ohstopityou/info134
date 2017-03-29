@@ -161,10 +161,12 @@ header a {
   border: 2px solid darkslategrey;
   border-radius: 2px;
   cursor: pointer;
+  transition: background-size 0.5s;
+  max-width: 150px
 }
 
 .button:hover {
-  background-color: darkslategrey;
+  background-size: 1500px;
 }
 
 #showMore {
@@ -195,6 +197,7 @@ header a {
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
+  background-image: url(../images/wall.jpg);
 }
 
 .moviePoster img{
@@ -205,6 +208,7 @@ header a {
 }
 
 .posterTitle {
+  color: white;
   z-index: 1;
   font-size: 40px;
   max-width: 100%;
@@ -217,7 +221,7 @@ header a {
 }
 
 .movie:hover .moviePoster img{
-  filter: blur(8px);
+  filter: blur(9px);
   z-index: 0;
 }
 
@@ -298,6 +302,10 @@ iframe{
   margin-top: 15px;
 }
 
+form input[type="text"]{
+  height: 50px;
+}
+
 /* ---------quicksearch------- */
 
 #quickSearchForm {
@@ -331,7 +339,7 @@ iframe{
   z-index: 11;
   position: absolute;
   transition: height 0.4s;
-  max-height: 800px;
+  max-height: 710px;
   overflow: hidden;
   width: calc(100% - 100px);
 }
@@ -426,6 +434,10 @@ iframe{
 
 .movieCard:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.12);
+}
+
+.movieCard a:hover {
+  color: limegreen;
 }
 
 /* -----------footer------------ */
