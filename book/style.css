@@ -1,0 +1,110 @@
+body, html
+{
+    font-family: 'Merriweather', 'Times New Roman';
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    color: #F5E4B0;
+
+}
+
+.container
+{
+    background: url(notebook2.jpg);
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.reminderContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 200px;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 1px black;
+}
+
+.reminderContainer > div {
+    margin: 0px 25px;
+    width: 500px;
+}
+
+.right {
+    order: 2;
+}
+
+
+.left {
+    order: 1;
+}
+
+#reminderList ul {
+    background: red;
+}
+
+#reminderList li {
+    word-wrap: break-word;
+    word-break: break-all;
+    margin: 15px 0px;
+    transition: all 250ms ease-in;
+}
+
+#reminderList li.added {
+    opacity: 1;
+}
+
+#reminderList li:hover {
+    cursor: pointer;
+}
+
+.reminderContainer form {
+    margin: 0.67em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reminderInput {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.reminderInput, input {
+    font-size: 18px;
+}
+
+.reminderContainer form input[name="submit"] {
+    max-width: 100%;
+    margin: 20px 0px;
+    background: #FFF8B5;
+    border: none;
+    box-shadow: 1px 1px 1px black;
+    font-family: 'Merriweather', 'Times New Roman';
+}
+
+.reminderContainer form .reminderInput input {
+    border: 0;
+    background: none;
+    border-bottom: 1px solid black;
+    display: inline;
+    font-family: 'Merriweather', 'Times New Roman';
+    text-decoration: none;
+    margin: 0px 0px 0px 5px;
+    width: 100%;
+    font-size: 2em;
+    color: #F5E4B0;
+    text-shadow: 1px 1px 1px black;
+}
+
+.reminderContainer form .reminderInput input:focus {
+    outline: none;
+}
+
+.strike-through {
+    text-decoration: line-through;
+    color: #FC3A50;
+}

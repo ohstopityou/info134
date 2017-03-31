@@ -3,38 +3,291 @@
  <head>
    <title>UiB Movie Database</title>
    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="css/stylesheet.css">
-   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
  </head>
   <body>
-    <header>
-      <h1> UiB Filmer </h1>
-      <div id="logon">
-        <p id="username"> brukernavn </p>
-        <p id="logout"> logg ut </p>
+    <div class="top-header">
+     <header>
+      <a href="index.html" id="pagetitle">UiB Filmer</a>
+      <div class="stretchdiv"></div>
+      <div id="nav">
+        <img src="images/menu-icon.png" id="menu-icon">
+        <div class="menu">
+         <ul>
+          <li><a href="List.html">Mine Filmer</a></li>
+          <li><a href="List.html">Mine Lån</a></li>
+         </ul>
+        </div>
       </div>
-    </header>
-    <main>
-    
-    <div id="container">
-    <aside id="newmovies">
-      new movies
-    </aside>
-    <div id="sistreturnert">
-      sist returnert
-    </div>
-    <aside id="rightbar">
-      right sidebar
-    </aside>
-    </div>
-    <div id="content">
-     <form action="#">
-      <input type="text" name="søk" value="søk">
-      <input type="submit">
-     </form> 
-     <p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </p>
+      <div id="profile-icon">
+        <img src="http://placehold.it/40x40">
+        <div id="logon">
+          <form action="#">
+            please log in<br>
+            <input type="text" name="username" value="usrnme"><br>
+            <input type="password" name="password"><br>
+            <input type="submit">
+          </form>
+        </div>
+      </div>
+     </header>
     </div>
     
-  </main>
+    <div class="container">
+    <div class="jumbotron">
+     <div class="jumbotron-container">
+     <div class="search-container">
+     <div class="search">
+      <form action="#">
+        <input type="text" name="searchField" placeholder="Søk etter filmer, skuespillere og mye mer..">
+        <input type="submit" name="searchSubmit">
+      </form> 
+       <p>Følgende kan låne: staben ved institutt for informasjon-og medievitenskap, studenter ved institutt.</p>
+       </div><!-- search -->
+     </div>
+     </div>
+    </div>
+    
+    <div class="cards-container">
+    
+    <div class="card-wrapper fullwidth">
+    <h2 class="cardtitle">recommendations</h2>
+    <div class="card moviescroller">
+     
+        <div class="movie aa"><a href="movie.html">
+        <img src="movies/Film1/The_intouchables_3.jpg">
+        <div class="siderating">
+          <p>Please rate this movie</p>
+          <div class="button"><a href="#">Rate movie</a></div>
+        </div>
+      </a>
+      </div>
+      
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film2/The_Lunchbox_1.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film3/Vaar_i_mummidalen_1.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film4/montypythonandtheholygrail_1.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film5/mi_1.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film6/Minority_Report_3.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film7/valkyrie_1.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+    </div>
+    </div>
+    
+    <div class="card-wrapper fullwidth">
+    <h2 class="cardtitle">new movies</h2>
+    <div class="card moviescroller">
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film7/valkyrie_1.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film6/Minority_Report_3.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film5/mi_1.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film4/montypythonandtheholygrail_1.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="image.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="image.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="image.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+    </div>
+    </div>
+    
+    <div class="card-wrapper fullwidth">
+    <h2 class="cardtitle">last returned</h2>
+    <div class="card moviescroller">
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film4/montypythonandtheholygrail_1.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film2/The_Lunchbox_1.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film1/The_intouchables_3.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="movies/Film7/valkyrie_1.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="image.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="image.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+      <div class="movie"><a href="movie.html">
+        <img src="image.jpg">
+        <div class="hidden">
+          <h1>Movietitle</h1>
+          <div class="rating">rating</div>
+          <div class="mymovies">my movies</div>
+          <div class="movieinfo">director osv</div>
+          <div class="comments">comments goes here</div>
+        </div>
+      </a></div>
+    </div>
+    </div>
+    
+    <div class="card-wrapper">
+    <h2 class="cardtitle">Statistics</h2>
+    <div class="card statistics">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores placeat, iusto obcaecati sunt labore accusantium aut aliquam facere nisi, doloremque, hic. Expedita, delectus consequatur sequi, totam omnis modi voluptatibus aperiam.</div>
+    </div>
+    
+    </div>
+    <footer>
+      Thomas Søvik - 2017
+    </footer>
+    </div>
   </body>
 </html>
