@@ -3,31 +3,38 @@
  <head>
    <title>UiB Movie Database</title>
    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="css/stylesheet.css">
-   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+   <script type="text/javascript" src="js/script.js"></script>
+   <script type="text/javascript" src="js/genres.js"></script>
+   <script type="text/javascript" src="js/reviews.js"></script>
+   <script type="text/javascript" src="js/object.js"></script>
+   <script type="text/javascript" src="js/movieinfo.js"></script>
+   <script type="text/javascript" src="js/loadMovies.js"></script>
+   <script type="text/javascript" src="js/query_params.js"></script>
+   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster"/>
  </head>
   <body>
     <div class="top-header">
       <header>
-        <a href="index.html" id="pagetitle">UiB Filmer</a>
+        <a href="index.html" id="pageTitle">UiB Filmer</a>
         <div class="stretchdiv"></div>
-        <div id="nav">
+        <div id="menu">
           <img src="images/menu-icon.png" id="menu-icon">
-          <div class="menu">
+          <nav>
             <ul>
-              <li><a href="List.html">Mine Filmer</a></li>
-              <li><a href="List.html">Mine Lån</a></li>
+              <li><a href="List.html?list=mymovies">Mine Filmer</a></li>
+              <li><a href="List.html?list=myloans">Mine Lån</a></li>
             </ul>
-          </div>
+          </nav>
         </div>
-        <div id="profile-icon">
-          <img src="http://placehold.it/40x40">
+        <div id="profile">
+          <img src="http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=50585199">
           <div id="logon">
-            <form action="#">
-              please log in<br>
-              <input type="text" name="username" value="usrnme"><br>
-              <input type="password" name="password"><br>
-              <input type="submit">
+            <form>
+              <input type="text" name="username" placeholder="username">
+              <input type="password" name="password" placeholder="password">
+              <input class="button" type="submit">
             </form>
           </div>
         </div>
@@ -35,59 +42,22 @@
     </div>
     
     <div class="container">
-      <div class="jumbotron">
-        <div class="jumbotron-wrapper">
-          <img src="movies/Film1/The_Intouchables_3.jpg">
-          <div class="movieinfo">
-            <h1>Intouchables</h1>
-            <h3>director</h3>
-            <p>After he becomes a quadriplegic from a paragliding accident, an aristocrat hires a young man from the projects to be his caregiver.</p>
-            <div class="button"><a href="#">Rate movie</a></div>
-            <div class="button"><a href="#">Save movie</a></div>
-          </div>
+      <div class="jumbotron-wrapper">
+        <div class="jumbotron">
+          <div class="movieHeader"></div>
         </div>
       </div>
-      
       <div class="cards-container">
-    
-      <div class="card-wrapper">
-      <h2 class="cardtitle">About</h2>
-      <div class="card">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, fugiat! Laboriosam incidunt amet recusandae soluta quam impedit quis, nihil, officiis distinctio ab blanditiis possimus vel ad excepturi! Reiciendis, provident, nam?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, fugiat! Laboriosam incidunt amet recusandae soluta quam impedit quis, nihil, officiis distinctio ab blanditiis possimus vel ad excepturi! Reiciendis, provident, nam?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, fugiat! Laboriosam incidunt amet recusandae soluta quam impedit quis, nihil, officiis distinctio ab blanditiis possimus vel ad excepturi! Reiciendis, provident, nam?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, fugiat! Laboriosam incidunt amet recusandae soluta quam impedit quis, nihil, officiis distinctio ab blanditiis possimus vel ad excepturi! Reiciendis, provident, nam?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, fugiat! Laboriosam incidunt amet recusandae soluta quam impedit quis, nihil, officiis distinctio ab blanditiis possimus vel ad excepturi! Reiciendis, provident, nam?
-      </div>
-      </div>
-      
-      <div class="card-wrapper">
-      <h2 class="cardtitle">Actors</h2>
-      <div class="actors card">
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
-        <a href="List.html"><img src="image.jpg"></a>
+       
+      <div class="reviewss">
+        <div class="review">
+          
+          <p class="username"></p>
+        </div>
       </div> 
+        <!--JS--> 
       </div>
-      
-      <div class="card-wrapper fullwidth">
-      <h2 class="cardtitle">Pictures</h2>
-      <div class="imgscroller card">
-        <img src="movies/Film1/The_Intouchables_1.jpg">
-        <img src="movies/Film1/The_Intouchables_2.jpg">
-        <img src="movies/Film1/The_Intouchables_3.jpg">
-        <img src="movies/Film1/The_intouchables_4.jpg">
-        <img src="movies/Film1/The_Intouchables_5.jpg">
-      </div>
-      </div> 
     </div>
-    <footer>
-      Thomas Søvik - 2017
-    </footer>
-    </div>
+    <footer>Thomas Søvik - 2017</footer>
   </body>
 </html>
