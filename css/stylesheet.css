@@ -1,5 +1,4 @@
 /* --------basic--------- */
-
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align:baseline; background:transparent;} body {line-height: 1;}ol, ul{list-style:none;} blockquote, q{quotes:none;} blockquote:before, blockquote:after, q:before, q:after{content:'';content:none;} :focus{outline:0;} ins{text-decoration:none;} del{text-decoration:line-through;} table{border-collapse:collapse; border-spacing:0;}
 
 html {
@@ -14,7 +13,7 @@ body {
   background-color: whitesmoke;
 }
 
-* {
+.card-title, header, .button, .posterTitle, .movieTitle {
   font-family: Lobster;
   font-style: normal;
   font-variant: normal;
@@ -27,7 +26,7 @@ a {
 
 a:hover{
   color: white;
-  background-color: darkslategray;
+  background-image: url(../images/wall.jpg);
 }
 
 .container {
@@ -42,7 +41,7 @@ a:hover{
   padding: 0 10px 0 20px;
   margin: 0 auto;
   width: 100%;
-  max-width: 1200px;
+  max-width: 800px;
 }
 
 .jumbotron-wrapper {
@@ -55,6 +54,10 @@ a:hover{
 
 .stretchdiv {
   flex-grow: 1;
+}
+
+.hidden {
+  display: none;
 }
 
 /* --------headers--------- */
@@ -225,17 +228,6 @@ header a {
   z-index: 0;
 }
 
-.moviescroller {
-  min-width: 100%;
-  padding-right: 0;
-}
-
-.moviescroller .card {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-}
-
 /* --------movieinfo-------*/
 
 .movieHeader{
@@ -248,33 +240,53 @@ header a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
   padding: 10px;
   height: 100%;
 }
 
-.movieInfo > * {
-  box-sizing: border-box;
-  width: 50%
+.movieInfo * {
+  
+}
+
+.movieInfo p {
+  font-size: 20px;
+}
+
+.country, .genre{
+  flex-grow: 1;
+  flex-basis: calc(100% - 70px);
+}
+
+.year, .runtime {
+  flex-basis: 70px;
+  text-align: right;
 }
 
 .movieTitle {
-  width: 100%;
   font-size: 30px;
   border-bottom: 1px solid black;
-  margin-bottom: 80px;
+  width: 100%;
+  padding-bottom: 5px;
 }
 
-.year, .runtime{
-  text-align: right;
-  flex-shrink: 1;
+.movieInfo .button {
+  padding: 5px 50px;
 }
 
-.genre, .country {
-  flex-grow: 1;
+iframe{
+  width: 100%;
+  height: 350px;
 }
 
 #Description , #Actors, #Reviews{
   line-height: 25px;
+}
+
+/* -----------review------------ */
+
+#commentForm{
+  width: 100%;
 }
 
 table {
@@ -282,14 +294,13 @@ table {
   text-align: center;
 }
 
-td, th{
-  height: 30px;
-  vertical-align: middle;
+.reviewBar {
+  border-top: 1px solid black;
 }
 
-iframe{
-  width: 100%;
-  height: 350px;
+td, th{
+  line-height: 25px;
+  vertical-align: middle;
 }
 
 /* ---------search/filter------- */
@@ -302,16 +313,7 @@ iframe{
   margin-top: 15px;
 }
 
-form input[type="text"]{
-  height: 50px;
-}
-
 /* ---------quicksearch------- */
-
-#quickSearchForm {
-  position: relative;
-  z-index: 11;
-}
 
 #quickSearchForm input[type="text"] {
   width: calc(100% - 100px);
@@ -321,15 +323,25 @@ form input[type="text"]{
   padding-left: 10px;
   border-radius: 2px;
   border: 0px;
+  position: relative;
+  z-index: 11;
 }
 
 #quickSearchForm .button {
   height: 100%;
   width: 100px;
   margin-left: -5px;
+  position: relative;
+  z-index: 11;
+}
+
+#advancedSearch {
+  margin-left: -10px;
+  float: right;
 }
 
 #quickSearchBox {
+  width: calc(100% - 100px);
   margin-top: 5px;
   border-radius: 2px;
   box-sizing: border-box;
@@ -337,11 +349,10 @@ form input[type="text"]{
   opacity: 0;
   background-color: whitesmoke;
   z-index: 11;
-  position: absolute;
+  position: relative;
   transition: height 0.4s;
-  max-height: 710px;
+  max-height: 630px;
   overflow: hidden;
-  width: calc(100% - 100px);
 }
 
 #quickSearchBox .card-wrapper {
@@ -366,14 +377,14 @@ form input[type="text"]{
 .cards-container{
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   box-sizing: border-box;
   justify-content: center;
-  flex-wrap: wrap;
   padding: 10px 0;
 }
 
 .card-wrapper {
-  flex-basis: 600px;
+  flex-basis: 800px;
   flex-shrink: 1;
   padding: 10px 20px;
   box-sizing: border-box;
@@ -396,25 +407,35 @@ form input[type="text"]{
   width: 100%;
 }
 
+.moviescroller {
+  min-width: 100%;
+  padding-right: 0;
+}
+
+.moviescroller .card {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
 /* ------------moviecard------------- */
 
 .movieCard {
   max-width: 800px;
-  padding: 0;
   overflow: auto;
   height: 100%;
+  padding: 0px;
 }
 
 .tinyCard {
   max-height: 80px;
   line-height: 40px;
   margin-bottom: 0px;
-  padding: 0px;
 }
 
 .tinyCard .movieTitle {
   border: inherit;
-  margin-bottom: 0px;
+  padding-bottom: 0px;
   height: 40px;
   overflow: hidden;
 }
@@ -429,7 +450,7 @@ form input[type="text"]{
 }
 
 .flexBasis {
-  flex-basis: 800px;
+  flex-basis: 600px;
 }
 
 .movieCard:hover {
@@ -484,11 +505,53 @@ footer {
     padding: 0;
   }
   
-  .movieTitle {
-    margin-bottom: 10px;
+  #pageTitle {
+    margin-left: 0px;
+  }
+  
+  .card-wrapper {
+    padding: 5px 10px;
+  }
+  
+  .moviescroller {
+    padding-right: 0px;
+  }
+  
+  .movieCard .button {
+    display: none;
+  }
+  
+  #quickSearchBox {
+    width: 100%;
+  }
+  
+  .search-container {
+    padding-top: 10px;
   }
 }
 
-@media only screen and (min-width : 1200px) {
-  
+/* -----------unused------------ 
+
+input[type="radio"] {
+  display: none;
 }
+
+ label:hover, label:hover ~ label, input[type="radio"]:checked ~ label {
+  color: orange;
+}
+
+<form class="starRating">
+  <input id="radio1" type="radio" value="5">
+    <label for="radio1">&#9733;</label>
+  <input id="radio2" type="radio" value="4">
+    <label for="radio2">&#9733;</label>
+  <input id="radio3" type="radio" value="3">
+    <label for="radio3">&#9733;</label>
+  <input id="radio4" type="radio" value="2">
+    <label for="radio4">&#9733;</label>
+  <input id="radio5" type="radio" value="1">
+    <label for="radio5">&#9733;</label>
+  <div class="button" action="submit">send</div>
+</form>
+
+*/

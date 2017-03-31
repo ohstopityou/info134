@@ -1,8 +1,8 @@
 console.log("loadMovies")
 
 var validIDs = []
-var myMovies = []
-var myLoans = []
+var myMovies = [1573, 3823]
+var myLoans = [63, 2108, 2003]
 
 function loadMovieCard(movieId) {
   movieObject = movies_object[movieId]

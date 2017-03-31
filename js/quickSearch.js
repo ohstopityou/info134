@@ -32,7 +32,7 @@ window.onload = function() {
 		return;
 	}
 	// Ellers så bruker vi fuzzyAnimalSearch-metoden
-	var results = fuzzyAnimalSearch(this.value);
+	var results = fuzzySearch(this.value);
     console.log(results)
 	// Og viser resultatene
 	displayResults(results);
@@ -60,9 +60,8 @@ window.onload = function() {
     }
   }
   
-  function fuzzyAnimalSearch(searchTerm) {
-	
-    var nameMatches = function(id) {
+  function fuzzySearch(searchTerm) {
+      var nameMatches = function(id) {
       var movieName = movies_object[id]["otitle"]
       return movieName.toLowerCase().includes(searchTerm.toLowerCase());
     }

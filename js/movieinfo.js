@@ -30,18 +30,21 @@ function loadTrailer() {
 
 function loadReviews(){
   reviewsCard = createDataCard("Reviews", cardsContainer)
-  tableHead = "<thead><tr><th>name</th><th>rating</th><th>comment</th><th>date</th></tr></thead>"
+  tableHead = "<thead><tr><th>name</th><th>comment</th><th>rating</th><th>date</th></tr></thead>"
   table = createElement(null, reviewsCard, tableHead, "table")
   
   reviews = reviews_object[movieID]
   for (review in reviews){
+    console.log(reviews[review])
     newRow = createElement(null, table, null, "tr")
     createElement(null, newRow, reviews[review]["username"], "td")
-    createElement(null, newRow, reviews[review]["rating"], "td")
     createElement(null, newRow, reviews[review]["comment"], "td")
+    createElement(null, newRow, reviews[review]["rating"], "td")
     createElement(null, newRow, reviews[review]["mod_date"], "td")
   }  
   console.log(getAverageRating(movieID))
+  var reviewBar = "<td colspan='2'><input id='commentForm' placeholder='comment'></td><td><input id='ratingForm'></td><td><div class='button'>send</div></td>"
+  createElement("reviewBar", table, reviewBar, "tr")
 }
 
 function getAverageRating(id) {

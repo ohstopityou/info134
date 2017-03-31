@@ -23,9 +23,12 @@ function search_for() {
           { results.push(movie_id) }
     }
   }
-  if (inputList == "mymovies") {
-    results = getMoviesByNewest()
+  if (inputList == "myloans") {
+    results = myLoans
   }
+  if (inputList == "mymovies") {
+      results = myMovies
+    }
   displayResults()
 }
 

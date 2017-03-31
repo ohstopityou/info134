@@ -9,6 +9,7 @@
     <script type="text/javascript" src="js/reviews.js"></script>
     <script type="text/javascript" src="js/loadMovies.js"></script>
     <script type="text/javascript" src="js/quickSearch.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster"/>
   </head>
   <body>
@@ -28,11 +29,10 @@
         <div id="profile">
           <img src="http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=50585199">
           <div id="logon">
-            <form action="#">
-              please log in<br>
-              <input type="text" name="username"><br>
-              <input type="password" name="password"><br>
-              <input type="submit">
+            <form>
+              <input type="text" name="username" placeholder="username">
+              <input type="password" name="password" placeholder="password">
+              <input class="button" type="submit">
             </form>
           </div>
         </div>
@@ -44,24 +44,17 @@
         <div class="jumbotron">
           <div class="search-container">
             <form action="list.html" id="quickSearchForm">
-              <div>
-                <input id="film_title" name="film_title" type="text" placeholder="movie name" autocomplete="off">
-                <input type="submit" class="button" value="Søk">
-              </div>
-              <div id="quickSearchBox"><!--JS--></div>
-              <!--<div>
-                  <input id="actor" name="actor" type="text" placeholder="actor" >
-              </div>
-              <div>
-                  <input id="director" name="director" type="text" placeholder="director" >
-              </div>
-              <div>
-                  <input id="genre" name="genre" type="text" placeholder="Genre">
-              </div>
-              <div>
-                  <input id="country" name="country" type="text" placeholder="Country">
-              </div>-->
+              <input id="film_title" name="film_title" type="text" placeholder="movie name" autocomplete="off">
+              <input type="submit" class="button" value="Søk">
+              <div class="button" id="advancedSearch" onclick="toggleClass('advancedSearch', 'hidden')">More</div>
+              <div class="advancedSearch hidden">
+                <input id="actor" name="actor" type="text" placeholder="actor">
+              <input id="director" name="director" type="text" placeholder="director">
+              <input id="genre" name="genre" type="text" placeholder="Genre">
+              <input id="country" name="country" type="text" placeholder="Country">    
+              </div>      
             </form>
+            <div id="quickSearchBox"><!--JS--></div>
             <div id="quickSearchBackground"></div>
             <p>Følgende kan låne: staben ved institutt for informasjon-og medievitenskap, studenter ved institutt.</p>
           </div>

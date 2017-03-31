@@ -31,11 +31,10 @@
         <div id="profile">
           <img src="http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=50585199">
           <div id="logon">
-            <form action="#">
-              please log in<br>
-              <input type="text" name="username" value="usrnme"><br>
-              <input type="password" name="password"><br>
-              <input type="submit">
+            <form>
+              <input type="text" name="username" placeholder="username">
+              <input type="password" name="password" placeholder="password">
+              <input class="button" type="submit">
             </form>
           </div>
         </div>
@@ -48,9 +47,15 @@
           <div class="movieHeader"></div>
         </div>
       </div>
-      <div class="cards-container"> 
+      <div class="cards-container">
+       
+      <div class="reviewss">
+        <div class="review">
+          
+          <p class="username"></p>
+        </div>
+      </div> 
         <!--JS--> 
-        <div class="button" id="cardSizeBtn" onclick="toggleClass('card-wrapper', 'flexBasis')">columnWidth</div>
       </div>
     </div>
     <footer>Thomas Søvik - 2017</footer>
