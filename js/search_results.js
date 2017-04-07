@@ -94,16 +94,19 @@ function loadMore() {
     return;
   }
   var btnText = "Load more movies (" + resultsLeft + " more)"
-  document.querySelector("#showMore").innerHTML = btnText
 }
 
 window.onload = function() {
   console.log("searchOnload")
+  getQuerys()
+  getIDs()
   search_for()
 }
 
 function getQuerys() {
-    query_params = get_query_string_parameters();
+  
+  console.log("getQuerys")
+  query_params = get_query_string_parameters();
 
   if (query_params.film_title) {
       inputTitle = query_params.film_title;

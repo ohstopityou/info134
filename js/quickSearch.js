@@ -9,7 +9,6 @@ window.onload = function() {
   searchForm.addEventListener("keyup", instantSearch)
 
   function showResultList(){
-    console.log("resultList")
     resultList.style.height="auto"
     resultList.style.opacity="1"
     searchBack.style.height="100%"
@@ -31,9 +30,8 @@ window.onload = function() {
 		// og returnerer fra metoden
 		return;
 	}
-	// Ellers så bruker vi fuzzyAnimalSearch-metoden
+	// Ellers så bruker vi fuzzySearch-metoden
 	var results = fuzzySearch(this.value);
-    console.log(results)
 	// Og viser resultatene
 	displayResults(results);
   }
@@ -61,11 +59,12 @@ window.onload = function() {
   }
   
   function fuzzySearch(searchTerm) {
-      var nameMatches = function(id) {
+    
+    var nameMatches = function(id) {
       var movieName = movies_object[id]["otitle"]
       return movieName.toLowerCase().includes(searchTerm.toLowerCase());
     }
-
+    
 	return validIDs.filter(id => nameMatches(id));
   }
 }
