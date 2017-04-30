@@ -5,11 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/stylesheet.css">
-    <script type="text/javascript" src="js/object.js"></script>
-    <script type="text/javascript" src="js/reviews.js"></script>
-    <script type="text/javascript" src="js/loadMovies.js"></script>
-    <script type="text/javascript" src="js/quickSearch.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster"/>
   </head>
   <body>
@@ -29,11 +24,8 @@
         <div id="profile">
           <img src="http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=50585199">
           <div id="logon">
-            <form>
-              <input type="text" name="username" placeholder="username">
-              <input type="password" name="password" placeholder="password">
-              <input class="button" type="submit">
-            </form>
+            <a href="#">Ola Nordmann</a>
+            <a href="#">Logg ut</a>
           </div>
         </div>
       </header>
@@ -44,37 +36,35 @@
         <div class="jumbotron">
           <div class="search-container">
             <form action="list.html" id="quickSearchForm">
-              <input id="film_title" name="film_title" type="text" placeholder="movie name" autocomplete="off">
+              <input id="film_title" name="film_title" type="text" placeholder="Søk etter filmtittel, skuespiller og mer" autocomplete="off">
               <input type="submit" class="button" value="Søk">
-              <div class="button" id="advancedSearch" onclick="toggleClass('advancedSearch', 'hidden')">More</div>
+              
+              <div class="button" id="advancedSearch" onclick="toggleClass('advancedSearch', 'hidden')">Mer</div>
               <div class="advancedSearch hidden">
-                <input id="actor" name="actor" type="text" placeholder="actor">
-              <input id="director" name="director" type="text" placeholder="director">
-              <input id="genre" name="genre" type="text" placeholder="Genre">
-              <input id="country" name="country" type="text" placeholder="Country">    
-              </div>      
+                <input id="actor" name="actor" type="text" placeholder="Skuespiller">
+                <input id="director" name="director" type="text" placeholder="Regisør">
+                <input id="genre" name="genre" type="text" placeholder="Sjanger">
+                <input id="country" name="country" type="text" placeholder="Land">    
+              </div> 
             </form>
             <div id="quickSearchBox"><!--JS--></div>
             <div id="quickSearchBackground"></div>
+            
             <p>Følgende kan låne: staben ved institutt for informasjon-og medievitenskap, studenter ved institutt.</p>
-          </div>
+          </div> <!-- End search container-->
         </div>
       </div>
 
       <div class="cards-container">
-        <script>
-          getIDs()
-          loadMovieScrollers()
-        </script>
-
-        <div class="card-wrapper">
-          <h2 class="card-title">Statistics</h2>
-          <div class="card">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores placeat, iusto obcaecati sunt labore accusantium aut aliquam facere nisi, doloremque, hic. Expedita, delectus consequatur sequi, totam omnis modi voluptatibus aperiam.</div>
-        </div>
+      <!--JS-->
       </div>
     </div>
     <footer>
       Thomas Søvik - 2017
     </footer>
+    <script type="text/javascript" src="js/object.js" async></script>
+    <script type="text/javascript" src="js/reviews.js" async></script>
+    <script type="text/javascript" src="js/load_movies.js"></script>
+    <script type="text/javascript" src="js/main_page.js"></script>
   </body>
 </html>

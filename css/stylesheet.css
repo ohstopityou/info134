@@ -82,7 +82,6 @@ header a {
   margin-left: 10px;
   font-size: 35px;
   box-sizing: border-box;
-  width: 190px;
 }
 
 .top-header, .search-header {
@@ -132,6 +131,10 @@ header a {
 #profile img {
   border-radius: 50%;
   height: 100%;
+}
+
+#profile a:hover {
+  background-image: none;
 }
 
 #profile:hover #logon {
