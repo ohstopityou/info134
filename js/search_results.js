@@ -22,7 +22,7 @@ function getQuerys() {
 }
 
 function search_for() {
-  console.log("searching")
+
   if (!noInput()){
     for (movie_id in movies_object){
       movie_object = movies_object[movie_id]
@@ -35,12 +35,13 @@ function search_for() {
           { results.push(movie_id) }
     }
   }
-  if (inputList == "myloans") {
+  else if (inputList == "myloans") {
     results = myLoans
   }
-  if (inputList == "mymovies") {
-      results = myMovies
-    }
+  else if (inputList == "mymovies") {
+    results = myMovies
+  }
+  
   displayResults()
 }
 
