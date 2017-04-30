@@ -13,7 +13,7 @@ function createElement (classname, container, innerHtml, type){
 }
 
 function createMovieCard(id, container, extraClass) {
-  movieObject = movies_object[id]
+  movie_object = movies_object[id]
   var loadAll = true;
   
   wrapper = createElement("card-wrapper", container)
@@ -30,18 +30,18 @@ function createMovieCard(id, container, extraClass) {
 }
 
 function loadMovieCardInfo(id, container, loadAll){
-  movieObject = movies_object[id]
+  //movie_object = movies_object[id]
   container.appendChild(createMoviePoster(id))
   movieInfo = createElement("movieInfo", container)
-  createElement("movieTitle", movieInfo, movieObject["otitle"])
+  createElement("movieTitle", movieInfo, movie_object["otitle"])
   
   if (loadAll){
+    console.log("logall")
     createElement("genre", movieInfo, genres_object[id], "p")
-    createElement("year", movieInfo, "("+ movieObject["year"]+")", "p")
-    createElement("country", movieInfo, movieObject["country"], "p")
-    createElement("runtime", movieInfo, movieObject["length"] + " min", "p")
+    createElement("year", movieInfo, "("+ movie_object["year"]+")", "p")
+    createElement("country", movieInfo, movie_object["country"], "p")
+    createElement("runtime", movieInfo, movie_object["length"] + " min", "p")
   }
-
 }
 
 function createMovieScroller(name){
@@ -135,7 +135,7 @@ function getAverageRating(id) {
     rating += reviews_object[id][review]["rating"]
     numbOfRatings ++;
   }
-  return (rating / numbOfRatings).toFixed(3)
+  return (rating / numbOfRatings).toFixed(1)
 }
 
 function getRandomId(){
@@ -172,4 +172,8 @@ function toggleClass(elements, className) {
       getElements[i].className += " " + className;
     }
   }
+}
+
+function insertAfter(element, afterThis) {
+    afterThis.parentNode.insertBefore(element, afterThis.nextSibling);
 }

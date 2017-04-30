@@ -248,22 +248,19 @@ header a {
   height: 100%;
 }
 
-.movieInfo * {
-  
-}
-
 .movieInfo p {
   font-size: 20px;
 }
 
-.country, .genre{
-  flex-grow: 1;
-  flex-basis: calc(100% - 70px);
+.buttonBar div{
+  display: inline-block;
+  margin: 5px;
+  min-width: 100%;
 }
 
-.year, .runtime {
-  flex-basis: 70px;
-  text-align: right;
+.genre, .country, .year, .runtime, .rating {
+  flex-basis: 50%;
+  text-align: center;
 }
 
 .movieTitle {
@@ -282,7 +279,7 @@ iframe{
   height: 350px;
 }
 
-#Description , #Actors, #Reviews{
+#Beskrivelse , #Skuespillere, #Anmeldelser, #Info{
   line-height: 25px;
 }
 
@@ -293,6 +290,7 @@ iframe{
 }
 
 table {
+  table-layout: fixed;
   width: 100%;
   text-align: center;
 }
