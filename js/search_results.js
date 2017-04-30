@@ -1,12 +1,11 @@
-console.log("searchResults.js")
 var results = []
 var resultIndex = 0
 
 var inputTitle      = ''
 var inputActor      = ''
 var inputDirector   = ''
-var inputGenre      = ''
 var inputCountry    = ''
+var inputGenre      = ''
 var inputList       = ''
 
 function getQuerys() {
@@ -51,11 +50,7 @@ function noInput(){
       inputDirector === ''  && 
       inputCountry  === ''  && 
       inputGenre    === '')
-    {
-      console.log("no input found")
-      return true
-    }
-  console.log("input found")
+    { return true }
   return false
 }
 
@@ -68,27 +63,16 @@ function inputMatchesData (iData, oData) {
     {return false}
 }
 
-function listAllGenres(){
-  uniqueGenres = []
-  for (movie_id in genres_object){
-    for (i in genres_object[movie_id]) {
-      var genre = genres_object[movie_id][i];
-      if(!uniqueGenres.includes(genre)){uniqueGenres.push(genre)}
-    } 
-  }
-  for (i in uniqueGenres){console.log(uniqueGenres[i])}
-}
-
 function genreMatches(genreInput, id) {
-  for (i in genres_object[id]) {
-    var genreData = genres_object[id][i]
+  for (genre in genres_object[id]) {
+    var genreData = genres_object[id][genre]
     if (inputMatchesData(genreInput, genreData)){return true}
-  } return false
+  } 
+  return false
 }
 
 function displayResults() {
-  var resultHolder = 
-  console.log("number of results : " + results.length)
+
   if (results.length == 0){ 
     document.querySelector(".cards-container").innerHTML = "" 
   }
@@ -120,3 +104,17 @@ window.onload = function() {
   getQuerys()
   search_for()
 }
+
+
+//not used (made so we could have a dropdown menu for genres)
+
+//function listAllGenres(){
+//  uniqueGenres = []
+//  for (movie_id in genres_object){
+//    for (i in genres_object[movie_id]) {
+//      var genre = genres_object[movie_id][i];
+//      if(!uniqueGenres.includes(genre)){uniqueGenres.push(genre)}
+//    } 
+//  }
+//  for (i in uniqueGenres){console.log(uniqueGenres[i])}
+//}

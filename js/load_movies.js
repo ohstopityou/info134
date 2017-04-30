@@ -1,6 +1,3 @@
-console.log("loadMovies")
-
-var validIDs = []
 var myMovies = [1573, 3823]
 var myLoans = [63, 2108, 2003]
 

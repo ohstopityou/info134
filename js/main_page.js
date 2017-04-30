@@ -1,5 +1,11 @@
 var validIDs = []
 
+function getIDs(){
+  for (id in movies_object){
+    validIDs.push(movies_object[id]["id"])
+  }
+}
+
 window.onload = function() {
   
   searchForm = document.querySelector("#film_title")
@@ -37,6 +43,15 @@ function instantSearch(e) {
   
 }
 
+function fuzzySearch(searchTerm) {
+
+  var nameMatches = function(id) {
+    var movieName = movies_object[id]["otitle"]
+    return movieName.toLowerCase().includes(searchTerm.toLowerCase());
+  }
+  return validIDs.filter(id => nameMatches(id));
+}
+
 function displayResults(results) {
 
   resultList.innerHTML = "";
@@ -47,27 +62,3 @@ function displayResults(results) {
     index++;
   }
 }
-
-function fuzzySearch(searchTerm) {
-
-  var nameMatches = function(id) {
-    var movieName = movies_object[id]["otitle"]
-    return movieName.toLowerCase().includes(searchTerm.toLowerCase());
-  }
-  return validIDs.filter(id => nameMatches(id));
-}
-
-function getIDs(){
-  for (id in movies_object){
-    validIDs.push(movies_object[id]["id"])
-  }
-}
-
-//    wrapper = createElement("card-wrapper", resultList)
-//    card = createElement("card movieCard tinyCard", wrapper)
-//    item_link = createElement(null, card, null, "a")
-//    item_link.href = "../movie.html?id=" + results[index]
-//    item_link.appendChild(createPosterByMovieId(results[index]))
-//    var movieTitle = movies_object[results[index]]["otitle"]
-//    movieInfo = createElement("movieInfo", item_link)
-//    createElement("movieTitle", movieInfo, movieTitle)

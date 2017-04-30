@@ -1,5 +1,4 @@
 function loadDescription(){
-  console.log("loadDesc")
   description = movie_object["description"]
   if (description){
     descriptionCard = createDataCard("Description", cardsContainer)
@@ -63,22 +62,24 @@ function createDataCard(name, container){
 
 window.onload = function() {
   
-  //get the query params
+  //get query parameters and movie databases
   query_params = get_query_string_parameters();
-  // get the movie_object from the "database" movies_object
   movie_object = movies_object[query_params.id];
-  // get the genre info (if it exists)
   genre_object = genres_object[query_params.id];
-  // get the review info (if it exists)
   review_object = reviews_object[query_params.id];
   
   //ends load if no valid id or no movie object found
   if (!query_params.id || !movie_object) {return}
-
-  movieID = movie_object["id"]
-  loadMovieCardInfo(movieID, document.querySelector(".movieHeader"), true)
   
+  //set short names for often used elements
+  movieID = movie_object["id"]
   cardsContainer = document.querySelector(".cards-container")
+  movieHeader = document.querySelector(".movieHeader")
+  
+  //load data into movieHeader
+  loadMovieCardInfo(movieID, movieHeader, true)
+  
+  //load data into boxes below header
   loadDescription()
   loadActors()
   loadTrailer()
