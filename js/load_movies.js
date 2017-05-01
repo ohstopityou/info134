@@ -19,9 +19,8 @@ function createMovieCard(id, container, extraClass) {
   wrapper = createElement("card-wrapper", container)
   card = createElement("card movieCard", wrapper)
   item_link = createElement(null, card, null, "a")
-  item_link.href = "../movie.html?id=" + id
+  item_link.href = "movie.html?id=" + id
   if (extraClass) {
-    console.log("extraclass")
     card.className += " " + extraClass;
     loadAll = false;
   }
@@ -36,7 +35,6 @@ function loadMovieCardInfo(id, container, loadAll){
   createElement("movieTitle", movieInfo, movie_object["otitle"])
   
   if (loadAll){
-    console.log("logall")
     createElement("genre", movieInfo, genres_object[id], "p")
     createElement("year", movieInfo, "("+ movie_object["year"]+")", "p")
     createElement("country", movieInfo, movie_object["country"], "p")
@@ -83,7 +81,7 @@ function loadMoviePosters(container, fromThisArray, howMany){
     var id = fromThisArray[i]
     movie = createElement("movie", container)
     movie_link = createElement(null, movie, null, "a")
-    movie_link.href = "../movie.html?id=" + id;
+    movie_link.href = "movie.html?id=" + id;
     movie_link.appendChild(createMoviePoster(id))
   }
 }
@@ -172,8 +170,4 @@ function toggleClass(elements, className) {
       getElements[i].className += " " + className;
     }
   }
-}
-
-function insertAfter(element, afterThis) {
-    afterThis.parentNode.insertBefore(element, afterThis.nextSibling);
 }

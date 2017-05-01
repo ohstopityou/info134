@@ -250,17 +250,18 @@ header a {
 
 .movieInfo p {
   font-size: 20px;
+  flex-basis: 50%;
+  text-align: center;
+}
+
+.buttonBar {
+  margin: 0 auto;
 }
 
 .buttonBar div{
   display: inline-block;
   margin: 5px;
-  min-width: 100%;
-}
-
-.genre, .country, .year, .runtime, .rating {
-  flex-basis: 50%;
-  text-align: center;
+  padding: 5px 50px;
 }
 
 .movieTitle {
@@ -268,10 +269,6 @@ header a {
   border-bottom: 1px solid black;
   width: 100%;
   padding-bottom: 5px;
-}
-
-.movieInfo .button {
-  padding: 5px 50px;
 }
 
 iframe{
@@ -285,16 +282,6 @@ iframe{
 
 /* -----------review------------ */
 
-#commentForm{
-  width: 100%;
-}
-
-table {
-  table-layout: fixed;
-  width: 100%;
-  text-align: center;
-}
-
 .reviewBar {
   border-top: 1px solid black;
 }
@@ -302,6 +289,55 @@ table {
 td, th{
   line-height: 25px;
   vertical-align: middle;
+}
+
+.review {
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+}
+
+.review * {
+  display: inline-block;
+}
+
+.username, .date{
+  width: 100px;
+}
+
+.stars {
+  width: calc(100% - 200px);
+  text-align: right;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
+.comment {
+  width: 100%;
+}
+
+.date {
+  text-align: center;
+}
+
+.userReview {
+  padding-top: 5px;
+  width: 100%;
+  height: 50px;
+}
+
+.userReview * {
+  height: 100%;
+  border: 1px solid black;
+}
+
+.commentForm {
+  box-sizing: border-box;
+  width: calc(100% - 148px)
+}
+
+.ratingForm {
+  box-sizing: border-box;
+  width: 50px;
 }
 
 /* ---------search/filter------- */

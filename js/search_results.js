@@ -1,3 +1,8 @@
+window.onload = function() {
+  getQuerys()
+  search_for()
+}
+
 var results = []
 var resultIndex = 0
 
@@ -9,7 +14,6 @@ var inputGenre      = ''
 var inputList       = ''
 
 function getQuerys() {
-  console.log("getQuerys")
   
   query_params = get_query_string_parameters();
   
@@ -24,21 +28,22 @@ function getQuerys() {
 function search_for() {
 
   if (!noInput()){
+    
     for (movie_id in movies_object){
-      movie_object = movies_object[movie_id]
+      var movie_object = movies_object[movie_id]
       
-      if (inputMatchesData(inputTitle, movie_object["otitle"])     && 
-          inputMatchesData(inputActor, movie_object["folk"])       &&
-          inputMatchesData(inputDirector, movie_object["dir"])     &&
-          inputMatchesData(inputCountry, movie_object["country"])  &&
+      if (searchMatches(inputTitle, movie_object["otitle"])     && 
+          searchMatches(inputActor, movie_object["folk"])       &&
+          searchMatches(inputDirector, movie_object["dir"])     &&
+          searchMatches(inputCountry, movie_object["country"])  &&
           genreMatches(inputGenre, movie_id))
           { results.push(movie_id) }
     }
   }
-  else if (inputList == "myloans") {
+  if (inputList == "myloans") {
     results = myLoans
   }
-  else if (inputList == "mymovies") {
+  if (inputList == "mymovies") {
     results = myMovies
   }
   
@@ -55,20 +60,25 @@ function noInput(){
   return false
 }
 
-function inputMatchesData (iData, oData) {
-  if (!iData) //user did not search for anything
+function searchMatches (search, checkValue) {
+  if (!search)    //user did not search for anything
     {return true}
-  if (oData)  //checks if data is valid
-    {return oData.toLowerCase().includes(iData.toLowerCase())}
-  else        //user searched for x but data is invalid
+  if (checkValue) //checks if value is defined
+    {return checkValue.toLowerCase().includes(search.toLowerCase())}
+  else            //user searched for x but value does not match
     {return false}
 }
 
-function genreMatches(genreInput, id) {
-  for (genre in genres_object[id]) {
-    var genreData = genres_object[id][genre]
-    if (inputMatchesData(genreInput, genreData)){return true}
-  } 
+function genreMatches(search, id) {
+  if (!search)    //returns true if user did not search for anything
+    {return true}
+  
+  for (entry in genres_object[id]) {
+    //iterates over all genres linked to movie id
+    var genre = genres_object[id][entry]
+    //checks if search mathes genre
+    if (searchMatches(search, genre)) {return true}
+  }
   return false
 }
 
@@ -77,6 +87,7 @@ function displayResults() {
   if (results.length == 0){ 
     document.querySelector(".cards-container").innerHTML = "" 
   }
+  loadMore()
   loadMore()
 }
 
@@ -100,12 +111,6 @@ function loadMore() {
   }
   var btnText = "Load more movies (" + resultsLeft + " more)"
 }
-
-window.onload = function() {
-  getQuerys()
-  search_for()
-}
-
 
 //not used (made so we could have a dropdown menu for genres)
 
