@@ -1,17 +1,15 @@
 window.onload = function() {
   getQuerys()
-  search_for()
+  
+  if ( searchIsEmpty() ) {
+    loadProfile( loadUserList )
+  } else {
+    searchByQuery()
+  }
 }
 
 var results = []
 var resultIndex = 0
-
-var inputTitle      = ''
-var inputActor      = ''
-var inputDirector   = ''
-var inputCountry    = ''
-var inputGenre      = ''
-var inputList       = ''
 
 function getQuerys() {
   
@@ -25,37 +23,27 @@ function getQuerys() {
   inputList = query_params.list;
 }
 
-function search_for() {
+function searchByQuery() {
 
-  if (!noInput()){
-    
-    for (movie_id in movies_object){
-      var movie_object = movies_object[movie_id]
-      
-      if (searchMatches(inputTitle, movie_object["otitle"])     && 
-          searchMatches(inputActor, movie_object["folk"])       &&
-          searchMatches(inputDirector, movie_object["dir"])     &&
-          searchMatches(inputCountry, movie_object["country"])  &&
-          genreMatches(inputGenre, movie_id))
-          { results.push(movie_id) }
-    }
+  for (movie_id in movies_object){
+    var movie_object = movies_object[movie_id]
+
+    if (searchMatches(inputTitle, movie_object["otitle"])     && 
+        searchMatches(inputActor, movie_object["folk"])       &&
+        searchMatches(inputDirector, movie_object["dir"])     &&
+        searchMatches(inputCountry, movie_object["country"])  &&
+        genreMatches(inputGenre, movie_id))
+        { results.push(movie_id) }
   }
-  if (inputList == "myloans") {
-    results = myLoans
-  }
-  if (inputList == "mymovies") {
-    results = myMovies
-  }
-  
-  displayResults()
+  loadMoviesFrom(results)
 }
 
-function noInput(){
-  if (inputTitle    === ''  && 
-      inputActor    === ''  && 
-      inputDirector === ''  && 
-      inputCountry  === ''  && 
-      inputGenre    === '')
+function searchIsEmpty(){
+  if (!inputTitle     && 
+      !inputActor     && 
+      !inputDirector  && 
+      !inputCountry   && 
+      !inputGenre)
     { return true }
   return false
 }
@@ -82,20 +70,24 @@ function genreMatches(search, id) {
   return false
 }
 
-function displayResults() {
-
-  if (results.length == 0){ 
+function loadMoviesFrom(array) {
+  results = array;
+  
+  if (array.length == 0){ 
     document.querySelector(".cards-container").innerHTML = "" 
+  } else {
+    loadMore()
+    loadMore()
   }
-  loadMore()
-  loadMore()
 }
 
 function loadMore() {
 
-  let container = document.querySelector(".cards-container")
+  var container = document.querySelector(".cards-container")
   var loadTo = resultIndex + 6
+  
   while (resultIndex < loadTo && resultIndex != results.length){
+    
     if (window.innerWidth < 640){
       //loads small cards if mobile
       createMovieCard(results[resultIndex], container, "tinyCard")
@@ -104,12 +96,18 @@ function loadMore() {
     }
     resultIndex++
   }
-  var resultsLeft = results.length - resultIndex
-  if (resultsLeft <= 0){
-    document.querySelector("#showMore").style.display = 'none';
-    return;
+  updateLoadMoreBtn()
+}
+
+function updateLoadMoreBtn() {
+  var remaining = results.length - resultIndex
+  var showMoreBtn = document.querySelector("#showMore")
+  if (remaining <= 0){
+    showMoreBtn.style.display = 'none';
+  } else {
+    showMoreBtn.style.display = 'block';
+    showMoreBtn.innerHTML = "Load more movies (" + remaining + " more)"
   }
-  var btnText = "Load more movies (" + resultsLeft + " more)"
 }
 
 //not used (made so we could have a dropdown menu for genres)

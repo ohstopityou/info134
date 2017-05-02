@@ -9,22 +9,19 @@ window.onload = function() {
   var xhr = new XMLHttpRequest();
   xhr.responseType = "json";
   
+  xhr.open("GET", "http://wildboy.uib.no/mongodb/objects/?filter_id=" + query_params.id, true);
+  
   xhr.onload = function(){ 
     movie_object = xhr.response.rows[0]
-    //load page when request recieved
+    //load page when response recieved
     loadPage()
   }
-  
-  xhr.open("GET", "http://wildboy.uib.no/mongodb/objects/?filter_id=" + query_params.id, true);
   
   xhr.send();
 }
 
 function loadPage() {
   
-  console.log(movie_object)
-  console.log(genre_object)
-
   //ends load if no valid id or no movie object found
   if (!query_params.id || !movie_object) { return }
   
@@ -42,6 +39,8 @@ function loadPage() {
   loadTrailer()
   loadReviews()
   loadButtons()
+  
+  loadProfile()
 }
 
 function loadInfo() {
@@ -50,20 +49,20 @@ function loadInfo() {
   
   if (window.innerWidth < 640){
     //if mobile, only load poster and title to header
-    loadMovieCardInfo(movieID, movieHeader, false)
+    loadMovieCardInfo(movie_object, movieHeader, false)
     
     //create seperate card for info
     infoCard = createDataCard("Info", cardsContainer)
     
-    createElement("genre", infoCard, "Sjanger : "+genres_object[query_params.id], "p")
-    createElement("year", infoCard, "År : "+movie_object["year"], "p")
-    createElement("country", infoCard, "Land : "+movie_object["country"], "p")
-    createElement("runtime", infoCard, "Løpetid :  "+movie_object["length"] + " min", "p")
-    createElement("rating", infoCard, rating, "p")
+    createElement(null, infoCard, "Sjanger : "+genres_object[query_params.id], "p")
+    createElement(null, infoCard, "År : "+movie_object["year"], "p")
+    createElement(null, infoCard, "Land : "+movie_object["country"], "p")
+    createElement(null, infoCard, "Løpetid :  "+movie_object["length"] + " min", "p")
+    createElement(null, infoCard, rating, "p")
     
   } else {
     //desktop: load all info to movie header, and add rating
-    loadMovieCardInfo(movieID, movieHeader, true)
+    loadMovieCardInfo(movie_object, movieHeader, true)
     createElement("rating", movieInfo, rating, "p")
   }
 }

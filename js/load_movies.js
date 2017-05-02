@@ -1,6 +1,3 @@
-var myMovies = [1573, 3823]
-var myLoans = [63, 2108, 2003]
-
 // Make UI elements
 
 function createElement (classname, container, innerHtml, type){
@@ -24,21 +21,21 @@ function createMovieCard(id, container, extraClass) {
     card.className += " " + extraClass;
     loadAll = false;
   }
-  loadMovieCardInfo(id, item_link, loadAll)
+  loadMovieCardInfo(movie_object, item_link, loadAll)
   return card
 }
 
-function loadMovieCardInfo(id, container, loadAll){
-  //movie_object = movies_object[id]
-  container.appendChild(createMoviePoster(id))
+function loadMovieCardInfo(movie, container, loadAll){
+  
+  container.appendChild(createMoviePoster(movie))
   movieInfo = createElement("movieInfo", container)
-  createElement("movieTitle", movieInfo, movie_object["otitle"])
+  createElement("movieTitle", movieInfo, movie["otitle"])
   
   if (loadAll){
-    createElement("genre", movieInfo, genres_object[id], "p")
-    createElement("year", movieInfo, "("+ movie_object["year"]+")", "p")
-    createElement("country", movieInfo, movie_object["country"], "p")
-    createElement("runtime", movieInfo, movie_object["length"] + " min", "p")
+    createElement("genre", movieInfo, genres_object[movie.id], "p")
+    createElement("year", movieInfo, "("+ movie["year"]+")", "p")
+    createElement("country", movieInfo, movie["country"], "p")
+    createElement("runtime", movieInfo, movie["length"] + " min", "p")
   }
 }
 
@@ -62,11 +59,12 @@ function loadMovieScrollers(){
   loadMoviePosters(lastLoanedScroller, getMoviesByLoaned())
 }
 
-function createMoviePoster(id){
+function createMoviePoster(movie){
+
   poster = createElement("moviePoster")
-  createElement("posterTitle", poster, movies_object[id]["otitle"], "h2")
+  createElement("posterTitle", poster, movie["otitle"], "h2")
   img = document.createElement("img");
-  img.src = getImgUrl(id);
+  img.src = getImgUrl(movie);
   img.onerror = function(){
     this.style.display="none";
     this.parentElement.style.border = "10px solid black";
@@ -76,13 +74,13 @@ function createMoviePoster(id){
 }
 
 function loadMoviePosters(container, fromThisArray, howMany){
-  if( !howMany ){ howMany = 15 } //default value
+  if( !howMany ){ howMany = 5 } //default value
   for (var i = 0; i < howMany; i++){
     var id = fromThisArray[i]
-    movie = createElement("movie", container)
-    movie_link = createElement(null, movie, null, "a")
+    var poster = createElement("scrollerMovie", container)
+    movie_link = createElement(null, poster, null, "a")
     movie_link.href = "movie.html?id=" + id;
-    movie_link.appendChild(createMoviePoster(id))
+    movie_link.appendChild(createMoviePoster(movies_object[id]))
   }
 }
 
@@ -104,9 +102,14 @@ function getMoviesByNewest(howMany){
 function getMoviesByRecommended(howMany){
   if( !howMany ){ howMany = 15 } //default value
   var moviesByRating = []
-  var i = Object.keys(movies_object).length;
+  var i = Object.keys(movies_object).length; //start from end
+  
+  //find more movies until no more movies or satisfied with howmany
   while (moviesByRating.length < howMany && i != 0){
-    if (movies_object[i] && getAverageRating(i) > 4.5){
+    var movie = movies_object[i]
+    
+    //add movie if its a valid movie avg rating is above 4.5
+    if (movie && getAverageRating(movie) > 4.5){
       moviesByRating.push(i)
     }
     i--
@@ -125,7 +128,8 @@ function getMoviesByLoaned(howMany){
 
 // Other
 
-function getAverageRating(id) {
+function getAverageRating(movie) {
+  var id = movie.id
   if (!reviews_object[id]){return 0}
   var rating = 0;
   var numbOfRatings = 0;
@@ -146,14 +150,15 @@ function getRandomId(){
   return randomId;
 }
 
-function getImgUrl(id){
+function getImgUrl(movie){
+  
   var url = "https://nelson.uib.no/o/"
   var i = 0
-  if (id >= 1000) {i = 1}
-  if (id >= 2000) {i = 2}
-  if (id >= 3000) {i = 3}
-  if (id >= 4000) {i = 4}
-  url += i+"/"+id+".jpg"
+  if (movie.id >= 1000) {i = 1}
+  if (movie.id >= 2000) {i = 2}
+  if (movie.id >= 3000) {i = 3}
+  if (movie.id >= 4000) {i = 4}
+  url += i+"/"+movie.id+".jpg"
   return url
 }
 

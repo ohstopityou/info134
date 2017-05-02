@@ -18,6 +18,7 @@ window.onload = function() {
   
   getIDs()
   loadMovieScrollers()
+  loadProfile()
 }
 
 function showResultList(){
