@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <title>UiB Movie Database</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="css/stylesheet.css">
+   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lobster"/>
+ </head>
+ <body>
+    <div class="top-header">
+      <header>
+        <a href="index.html" id="pageTitle">UiB Filmer</a>
+        <div class="stretchdiv"></div>
+        <div id="menu">
+          <img src="images/menu-icon.png" id="menu-icon">
+          <nav>
+            <ul>
+              <li><a href="List.html?list=myMovies">Mine Filmer</a></li>
+              <li><a href="List.html?list=myLoans">Mine Lån</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div id="profile">
+          <img src="http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=50585199">
+          <div id="logon">
+            <a href="#" id="loggedOnUser">Ola Nordmann</a>
+            <a href="#">Logg ut</a>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div class="container" style="margin-top:60px;">
+      <div class="cards-container">       
+      </div><!-- Cards container-->
+      <div class="button hidden" id="showMore" onclick="loadMore()">Load more movies</div>
+      </div>
+    <footer> UiB Filmer - 2017 </footer>
+    <script type="text/javascript" src="js/object.js" async></script>
+    <script type="text/javascript" src="js/genres.js" async></script>
+    <script type="text/javascript" src="js/profile.js"></script>
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/query_params.js"></script>
+    <script type="text/javascript" src="js/search_results.js"></script>
+  </body>
+</html>
