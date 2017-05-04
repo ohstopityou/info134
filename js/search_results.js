@@ -2,9 +2,12 @@ window.onload = function() {
   getQuerys()
   
   if ( searchIsEmpty() ) {
+    //load profile, then load profile´s list
     loadProfile( loadUserList )
   } else {
+    //search for query, then load profile
     searchByQuery()
+    loadProfile()
   }
 }
 
@@ -87,15 +90,17 @@ function loadMoviesFrom(array) {
   if (array.length == 0){ 
     document.querySelector(".cards-container").innerHTML = "" 
   } else {
-    loadMore()
-    loadMore()
+    loadMore(12)
   }
 }
 
-function loadMore() {
+function loadMore(howMany) {
 
+  if (!howMany){
+  	howMany = 6
+  }
   var container = document.querySelector(".cards-container")
-  var loadTo = resultIndex + 6
+  var loadTo = resultIndex + howMany
   
   //load 6 more from results as long as there are more movies
   while (resultIndex < loadTo && resultIndex != results.length){
